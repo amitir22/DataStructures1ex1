@@ -1,0 +1,10 @@
+#ifndef DEEZEL_AVLSEARCHTREE_H
+#define DEEZEL_AVLSEARCHTREE_H
+
+
+class AVLSearchTree {
+
+};
+
+
+#endif //DEEZEL_AVLSEARCHTREE_H
