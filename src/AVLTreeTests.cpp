@@ -14,7 +14,7 @@ int main() {
     AVLTree<int, int> tree;
 
     //Specific Cases
-    
+
     std::ostringstream treeContent;
     /*correct output for the four next cases
     1 BF: 0 Height: 0
@@ -28,10 +28,10 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 0 Height: 1\n"
-                            "Key: 3 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 0 Height: 1\n"
+                             "Key: 3 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -45,10 +45,10 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 0 Height: 1\n"
-                            "Key: 3 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 0 Height: 1\n"
+                             "Key: 3 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -62,10 +62,10 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 0 Height: 1\n"
-                            "Key: 3 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 0 Height: 1\n"
+                             "Key: 3 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -79,10 +79,10 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 0 Height: 1\n"
-                            "Key: 3 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 0 Height: 1\n"
+                             "Key: 3 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -110,15 +110,15 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 0 Height: 1\n"
-                            "Key: 3 BF: 0 Height: 0\n"
-                            "Key: 4 BF: 1 Height: 2\n"
-                            "Key: 5 BF: 0 Height: 0\n"
-                            "Key: 6 BF: 1 Height: 3\n"
-                            "Key: 7 BF: 0 Height: 0\n"
-                            "Key: 8 BF: 1 Height: 1\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 0 Height: 1\n"
+                             "Key: 3 BF: 0 Height: 0\n"
+                             "Key: 4 BF: 1 Height: 2\n"
+                             "Key: 5 BF: 0 Height: 0\n"
+                             "Key: 6 BF: 1 Height: 3\n"
+                             "Key: 7 BF: 0 Height: 0\n"
+                             "Key: 8 BF: 1 Height: 1\n") {
         assert(false);
     }
 
@@ -146,15 +146,15 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 0 Height: 1\n"
-                            "Key: 3 BF: 0 Height: 0\n"
-                            "Key: 4 BF: 1 Height: 2\n"
-                            "Key: 5 BF: 0 Height: 0\n"
-                            "Key: 6 BF: 1 Height: 3\n"
-                            "Key: 7 BF: 0 Height: 0\n"
-                            "Key: 8 BF: 1 Height: 1\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 0 Height: 1\n"
+                             "Key: 3 BF: 0 Height: 0\n"
+                             "Key: 4 BF: 1 Height: 2\n"
+                             "Key: 5 BF: 0 Height: 0\n"
+                             "Key: 6 BF: 1 Height: 3\n"
+                             "Key: 7 BF: 0 Height: 0\n"
+                             "Key: 8 BF: 1 Height: 1\n") {
         assert(false);
     }
 
@@ -176,12 +176,12 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 0 Height: 1\n"
-                            "Key: 3 BF: 0 Height: 0\n"
-                            "Key: 5 BF: 1 Height: 2\n"
-                            "Key: 7 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 0 Height: 1\n"
+                             "Key: 3 BF: 0 Height: 0\n"
+                             "Key: 5 BF: 1 Height: 2\n"
+                             "Key: 7 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -203,12 +203,12 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 0 Height: 1\n"
-                            "Key: 3 BF: 0 Height: 0\n"
-                            "Key: 5 BF: 1 Height: 2\n"
-                            "Key: 7 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 0 Height: 1\n"
+                             "Key: 3 BF: 0 Height: 0\n"
+                             "Key: 5 BF: 1 Height: 2\n"
+                             "Key: 7 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -230,17 +230,17 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 2 BF: 0 Height: 0\n"
-                            "Key: 3 BF: 1 Height: 1\n"
-                            "Key: 5 BF: 1 Height: 2\n"
-                            "Key: 6 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 2 BF: 0 Height: 0\n"
+                             "Key: 3 BF: 1 Height: 1\n"
+                             "Key: 5 BF: 1 Height: 2\n"
+                             "Key: 6 BF: 0 Height: 0\n") {
         assert(false);
     }
 
     treeContent.clear();
     treeContent.str("");
-    
+
     //root deletion no roll successor is not a neighbour
     /*correct output
     2 BF: 0 Height: 0
@@ -260,13 +260,13 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 2 BF: 0 Height: 0\n"
-                            "Key: 3 BF: 1 Height: 1\n"
-                            "Key: 5 BF: 0 Height: 2\n"
-                            "Key: 6 BF: 0 Height: 0\n"
-                            "Key: 7 BF: 0 Height: 1\n"
-                            "Key: 8 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 2 BF: 0 Height: 0\n"
+                             "Key: 3 BF: 1 Height: 1\n"
+                             "Key: 5 BF: 0 Height: 2\n"
+                             "Key: 6 BF: 0 Height: 0\n"
+                             "Key: 7 BF: 0 Height: 1\n"
+                             "Key: 8 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -294,14 +294,14 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 1 Height: 1\n"
-                            "Key: 4 BF: 1 Height: 2\n"
-                            "Key: 5 BF: 0 Height: 0\n"
-                            "Key: 7 BF: 1 Height: 3\n"
-                            "Key: 8 BF: -1 Height: 1\n"
-                            "Key: 9 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 1 Height: 1\n"
+                             "Key: 4 BF: 1 Height: 2\n"
+                             "Key: 5 BF: 0 Height: 0\n"
+                             "Key: 7 BF: 1 Height: 3\n"
+                             "Key: 8 BF: -1 Height: 1\n"
+                             "Key: 9 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -337,24 +337,24 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 1 Height: 1\n"
-                            "Key: 5 BF: 0 Height: 2\n"
-                            "Key: 6 BF: 0 Height: 0\n"
-                            "Key: 7 BF: 0 Height: 1\n"
-                            "Key: 8 BF: 0 Height: 0\n"
-                            "Key: 9 BF: 0 Height: 3\n"
-                            "Key: 10 BF: 0 Height: 0\n"
-                            "Key: 12 BF: -1 Height: 2\n"
-                            "Key: 13 BF: -1 Height: 1\n"
-                            "Key: 14 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 1 Height: 1\n"
+                             "Key: 5 BF: 0 Height: 2\n"
+                             "Key: 6 BF: 0 Height: 0\n"
+                             "Key: 7 BF: 0 Height: 1\n"
+                             "Key: 8 BF: 0 Height: 0\n"
+                             "Key: 9 BF: 0 Height: 3\n"
+                             "Key: 10 BF: 0 Height: 0\n"
+                             "Key: 12 BF: -1 Height: 2\n"
+                             "Key: 13 BF: -1 Height: 1\n"
+                             "Key: 14 BF: 0 Height: 0\n") {
         assert(false);
     }
 
     treeContent.clear();
     treeContent.str("");
-    
+
     //node deletion causing LR case9
     /*correct output
     1 BF: 0 Height: 0
@@ -374,13 +374,13 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 0 Height: 1\n"
-                            "Key: 3 BF: 0 Height: 0\n"
-                            "Key: 4 BF: 0 Height: 2\n"
-                            "Key: 7 BF: -1 Height: 1\n"
-                            "Key: 8 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 0 Height: 1\n"
+                             "Key: 3 BF: 0 Height: 0\n"
+                             "Key: 4 BF: 0 Height: 2\n"
+                             "Key: 7 BF: -1 Height: 1\n"
+                             "Key: 8 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -406,13 +406,13 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 1 BF: 0 Height: 0\n"
-                            "Key: 2 BF: 1 Height: 1\n"
-                            "Key: 3 BF: 0 Height: 2\n"
-                            "Key: 4 BF: 0 Height: 0\n"
-                            "Key: 7 BF: 0 Height: 1\n"
-                            "Key: 8 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 1 BF: 0 Height: 0\n"
+                             "Key: 2 BF: 1 Height: 1\n"
+                             "Key: 3 BF: 0 Height: 2\n"
+                             "Key: 4 BF: 0 Height: 0\n"
+                             "Key: 7 BF: 0 Height: 1\n"
+                             "Key: 8 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -438,13 +438,13 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 2 BF: 0 Height: 0\n"
-                            "Key: 3 BF: 0 Height: 1\n"
-                            "Key: 7 BF: 0 Height: 0\n"
-                            "Key: 8 BF: 0 Height: 2\n"
-                            "Key: 9 BF: -1 Height: 1\n"
-                            "Key: 10 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 2 BF: 0 Height: 0\n"
+                             "Key: 3 BF: 0 Height: 1\n"
+                             "Key: 7 BF: 0 Height: 0\n"
+                             "Key: 8 BF: 0 Height: 2\n"
+                             "Key: 9 BF: -1 Height: 1\n"
+                             "Key: 10 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -469,20 +469,20 @@ int main() {
     tree.remove(1);
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
-    
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 2 BF: 0 Height: 0\n"
-                            "Key: 3 BF: 1 Height: 1\n"
-                            "Key: 7 BF: 0 Height: 2\n"
-                            "Key: 10 BF: 0 Height: 0\n"
-                            "Key: 13 BF: 0 Height: 1\n"
-                            "Key: 14 BF: 0 Height: 0\n"){
+
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 2 BF: 0 Height: 0\n"
+                             "Key: 3 BF: 1 Height: 1\n"
+                             "Key: 7 BF: 0 Height: 2\n"
+                             "Key: 10 BF: 0 Height: 0\n"
+                             "Key: 13 BF: 0 Height: 1\n"
+                             "Key: 14 BF: 0 Height: 0\n") {
         assert(false);
     }
 
     treeContent.clear();
     treeContent.str("");
-    
+
     //double rotations RL and RR case 13
     /*correct output
     3 BF: 0 Height: 0
@@ -512,24 +512,24 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 3 BF: 0 Height: 0\n"
-                            "Key: 5 BF: 0 Height: 1\n"
-                            "Key: 7 BF: 0 Height: 0\n"
-                            "Key: 9 BF: 0 Height: 2\n"
-                            "Key: 11 BF: 0 Height: 0\n"
-                            "Key: 13 BF: 1 Height: 1\n"
-                            "Key: 15 BF: 0 Height: 3\n"
-                            "Key: 17 BF: 0 Height: 0\n"
-                            "Key: 19 BF: -1 Height: 2\n"
-                            "Key: 21 BF: -1 Height: 1\n"
-                            "Key: 23 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 3 BF: 0 Height: 0\n"
+                             "Key: 5 BF: 0 Height: 1\n"
+                             "Key: 7 BF: 0 Height: 0\n"
+                             "Key: 9 BF: 0 Height: 2\n"
+                             "Key: 11 BF: 0 Height: 0\n"
+                             "Key: 13 BF: 1 Height: 1\n"
+                             "Key: 15 BF: 0 Height: 3\n"
+                             "Key: 17 BF: 0 Height: 0\n"
+                             "Key: 19 BF: -1 Height: 2\n"
+                             "Key: 21 BF: -1 Height: 1\n"
+                             "Key: 23 BF: 0 Height: 0\n") {
         assert(false);
     }
 
     treeContent.clear();
     treeContent.str("");
-    
+
     //double rotations RR and RR case 14
     /*correct output
     3 BF: 0 Height: 0
@@ -559,18 +559,18 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 3 BF: 0 Height: 0\n"
-                            "Key: 7 BF: 0 Height: 1\n"
-                            "Key: 8 BF: 0 Height: 0\n"
-                            "Key: 9 BF: 0 Height: 2\n"
-                            "Key: 11 BF: 0 Height: 0\n"
-                            "Key: 13 BF: 1 Height: 1\n"
-                            "Key: 15 BF: 0 Height: 3\n"
-                            "Key: 17 BF: 0 Height: 0\n"
-                            "Key: 19 BF: -1 Height: 2\n"
-                            "Key: 21 BF: -1 Height: 1\n"
-                            "Key: 23 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 3 BF: 0 Height: 0\n"
+                             "Key: 7 BF: 0 Height: 1\n"
+                             "Key: 8 BF: 0 Height: 0\n"
+                             "Key: 9 BF: 0 Height: 2\n"
+                             "Key: 11 BF: 0 Height: 0\n"
+                             "Key: 13 BF: 1 Height: 1\n"
+                             "Key: 15 BF: 0 Height: 3\n"
+                             "Key: 17 BF: 0 Height: 0\n"
+                             "Key: 19 BF: -1 Height: 2\n"
+                             "Key: 21 BF: -1 Height: 1\n"
+                             "Key: 23 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -607,18 +607,18 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 6 BF: 0 Height: 0\n"
-                            "Key: 7 BF: 1 Height: 1\n"
-                            "Key: 8 BF: 1 Height: 2\n"
-                            "Key: 9 BF: 0 Height: 0\n"
-                            "Key: 10 BF: 0 Height: 3\n"
-                            "Key: 11 BF: -1 Height: 1\n"
-                            "Key: 12 BF: 0 Height: 0\n"
-                            "Key: 15 BF: 0 Height: 2\n"
-                            "Key: 17 BF: 0 Height: 0\n"
-                            "Key: 18 BF: 0 Height: 1\n"
-                            "Key: 20 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 6 BF: 0 Height: 0\n"
+                             "Key: 7 BF: 1 Height: 1\n"
+                             "Key: 8 BF: 1 Height: 2\n"
+                             "Key: 9 BF: 0 Height: 0\n"
+                             "Key: 10 BF: 0 Height: 3\n"
+                             "Key: 11 BF: -1 Height: 1\n"
+                             "Key: 12 BF: 0 Height: 0\n"
+                             "Key: 15 BF: 0 Height: 2\n"
+                             "Key: 17 BF: 0 Height: 0\n"
+                             "Key: 18 BF: 0 Height: 1\n"
+                             "Key: 20 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -654,18 +654,18 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 6 BF: 0 Height: 0\n"
-                            "Key: 7 BF: 1 Height: 1\n"
-                            "Key: 8 BF: 1 Height: 2\n"
-                            "Key: 9 BF: 0 Height: 0\n"
-                            "Key: 10 BF: 0 Height: 3\n"
-                            "Key: 11 BF: -1 Height: 1\n"
-                            "Key: 12 BF: 0 Height: 0\n"
-                            "Key: 15 BF: 0 Height: 2\n"
-                            "Key: 20 BF: 0 Height: 0\n"
-                            "Key: 21 BF: 0 Height: 1\n"
-                            "Key: 22 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 6 BF: 0 Height: 0\n"
+                             "Key: 7 BF: 1 Height: 1\n"
+                             "Key: 8 BF: 1 Height: 2\n"
+                             "Key: 9 BF: 0 Height: 0\n"
+                             "Key: 10 BF: 0 Height: 3\n"
+                             "Key: 11 BF: -1 Height: 1\n"
+                             "Key: 12 BF: 0 Height: 0\n"
+                             "Key: 15 BF: 0 Height: 2\n"
+                             "Key: 20 BF: 0 Height: 0\n"
+                             "Key: 21 BF: 0 Height: 1\n"
+                             "Key: 22 BF: 0 Height: 0\n") {
         assert(false);
     }
 
@@ -688,11 +688,11 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 2 BF: 0 Height: 0\n"
-                            "Key: 3 BF: -1 Height: 2\n"
-                            "Key: 4 BF: 0 Height: 0\n"
-                            "Key: 6 BF: 1 Height: 1\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 2 BF: 0 Height: 0\n"
+                             "Key: 3 BF: -1 Height: 2\n"
+                             "Key: 4 BF: 0 Height: 0\n"
+                             "Key: 6 BF: 1 Height: 1\n") {
         assert(false);
     }
 
@@ -712,10 +712,10 @@ int main() {
     tree.printTreeInfoInOrder(treeContent);
     tree.treeClear();
 
-    if(treeContent.str() != "Tree Info summary:\n"
-                            "Key: 2 BF: 0 Height: 0\n"
-                            "Key: 3 BF: 0 Height: 1\n"
-                            "Key: 6 BF: 0 Height: 0\n"){
+    if (treeContent.str() != "Tree Info summary:\n"
+                             "Key: 2 BF: 0 Height: 0\n"
+                             "Key: 3 BF: 0 Height: 1\n"
+                             "Key: 6 BF: 0 Height: 0\n") {
         assert(false);
     }
 

@@ -19,11 +19,11 @@ namespace DataStructuresWet1 {
 
         ~SongInfo();
 
-        int getArtistId();
+        int getArtistId() const;
 
         int getSongId() const;
 
-        int getStreamCount();
+        int getStreamCount() const;
 
         void setArtistId(int newArtistId);
 

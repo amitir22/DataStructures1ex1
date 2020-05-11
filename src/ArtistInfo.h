@@ -17,19 +17,17 @@ namespace DataStructuresWet1 {
     public:
         explicit ArtistInfo(int artistId, int numOfSongs);
 
-        ArtistInfo();
-
         ~ArtistInfo();
 
         unique_ptr<SongInfo[]> &getSongs();
 
         unique_ptr<shared_ptr<BiDirectionalNode<StreamCountGroup>>[]> &getSongsPos();
 
-        unique_ptr<shared_ptr<BiDirectionalNode<SongInfo>>[]>& getSongInfoListPointers();
+        unique_ptr<shared_ptr<BiDirectionalNode<SongInfo>>[]> &getSongInfoListPointers();
 
-        int getArtistId();
+        int getArtistId() const;
 
-        int getNumOfSongs();
+        int getNumOfSongs() const;
 
     private:
         int artistId;

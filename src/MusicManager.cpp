@@ -76,7 +76,7 @@ namespace DataStructuresWet1 {
         return SUCCESS;
     }
 
-    StatusType MusicManager::numberOfStreams(int artistId, int songId, int *streams) {
+    StatusType MusicManager::numberOfStreams(int artistId, int songId, int *streams) const {
         if (songId < 0 || artistId <= 0) {
             return INVALID_INPUT;
         }
@@ -98,7 +98,7 @@ namespace DataStructuresWet1 {
         return SUCCESS;
     }
 
-    StatusType MusicManager::getRecommendedSongs(int numOfSongs, int *artists, int *songs) {
+    StatusType MusicManager::getRecommendedSongs(int numOfSongs, int *artists, int *songs) const {
         if (numOfSongs <= 0) {
             return INVALID_INPUT;
         }
@@ -194,14 +194,6 @@ namespace DataStructuresWet1 {
         newSongCollectionNode.setValue(songCollection);
 
         return newSongCollectionNode;
-    }
-
-    AVLTree<int, ArtistInfo> MusicManager::getArtistsToSongs() {
-        return this->artistsToSongs;
-    }
-
-    BiDirectionalLinkedList<StreamCountGroup> MusicManager::getStreamCountGroups() {
-        return this->streamCountGroups;
     }
 
     void MusicManager::removeSongsFromStreamCountGroup(int artistId, ArtistInfo &artistInfo) {
@@ -492,7 +484,7 @@ namespace DataStructuresWet1 {
 
     int MusicManager::insertSongsFromSongInfoList(int numOfSongs, int *artists, int *songs, int iteratedSongs,
                                                   const BiDirectionalLinkedList<SongInfo> &songInfos) {
-        BiDirectionalNode<SongInfo>* currentSongInfo;
+        BiDirectionalNode<SongInfo> *currentSongInfo;
         for (currentSongInfo = songInfos.getFirstPointer(); currentSongInfo != nullptr && iteratedSongs < numOfSongs;
              currentSongInfo = currentSongInfo->getNextPointer(), ++iteratedSongs) {
             // / Iterating on each song info node from the first
@@ -508,9 +500,9 @@ namespace DataStructuresWet1 {
                                                         int iteratedSongs,
                                                         const BiDirectionalLinkedList<SongCollection>
                                                         &songCollections) {
-        BiDirectionalNode<SongCollection>* currentSongCollection;
+        BiDirectionalNode<SongCollection> *currentSongCollection;
         for (currentSongCollection = songCollections.getFirstPointer(); currentSongCollection != nullptr &&
-                                                                 iteratedSongs < numOfSongs;
+                                                                        iteratedSongs < numOfSongs;
              currentSongCollection = currentSongCollection->getNextPointer()) {
             // Iterating on each song collection node from the first
             BiDirectionalLinkedList<SongInfo> &songInfos = currentSongCollection->getValue().getOrderedSongs();

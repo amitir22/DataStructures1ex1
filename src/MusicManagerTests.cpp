@@ -216,7 +216,7 @@ void addToSongCountTests() {
 
     songCollections =
             musicManager.getStreamCountGroups().getFirst()->getNext()->
-            getValue().getOrderedSongsCollectionsByArtistId();
+                    getValue().getOrderedSongsCollectionsByArtistId();
 
     songCollections.getFirst()->getValue().getOrderedSongs().printList(listContent);
     songCollections.getFirst()->getValue().getOrderedSongs().printList(listContentReversed);
@@ -265,7 +265,7 @@ void addToSongCountTests() {
     musicManager.addToSongCount(7, 1);
 
     assert(musicManager.getStreamCountGroups().getFirst()->getNext()->getValue().getStreamCount() == 2);
-    assert(musicManager.getStreamCountGroups().getFirst()->getNext()->getNext()== nullptr);
+    assert(musicManager.getStreamCountGroups().getFirst()->getNext()->getNext() == nullptr);
 
     listContent.clear();
     listContent.str("");
@@ -273,7 +273,7 @@ void addToSongCountTests() {
     listContentReversed.str("");
 
     songCollections = musicManager.getStreamCountGroups().getFirst()->getNext()->
-                    getValue().getOrderedSongsCollectionsByArtistId();
+            getValue().getOrderedSongsCollectionsByArtistId();
 
     songCollections.getFirst()->getValue().getOrderedSongs().printList(listContent);
     songCollections.getFirst()->getValue().getOrderedSongs().printListReverse(listContentReversed);

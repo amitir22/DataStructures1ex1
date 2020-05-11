@@ -24,7 +24,7 @@ public:
     // Done for optimization when we want to iterate a bit faster
     BiDirectionalNode<Type> *getNextPointer() const;
 
-    weak_ptr<BiDirectionalNode<Type>> getPrevious();
+    weak_ptr<BiDirectionalNode<Type>> getPrevious() const;
 
     void setValue(const Type &newValue);
 

@@ -32,7 +32,7 @@ namespace DataStructuresWet1 {
         this->orderedSongsCollectionsByArtistId = newOrderedSongsCollectionsByArtistId;
     }
 
-    int StreamCountGroup::getStreamCount() {
+    int StreamCountGroup::getStreamCount() const {
         return this->streamCount;
     }
 

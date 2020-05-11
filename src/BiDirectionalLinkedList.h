@@ -21,7 +21,7 @@ public:
     shared_ptr<BiDirectionalNode<Type>> getFirst() const;
 
     // Done for optimization when we want to iterate a bit faster
-    BiDirectionalNode<Type>* getFirstPointer() const;
+    BiDirectionalNode<Type> *getFirstPointer() const;
 
     shared_ptr<BiDirectionalNode<Type>> getLast() const;
 
@@ -35,8 +35,8 @@ public:
 
     void printListReverse(ostream &os) const;
 
-    shared_ptr<BiDirectionalNode<Type>>insertNodeAfter(shared_ptr<BiDirectionalNode<Type>> nodeToInsertAfter,
-                                                       shared_ptr<BiDirectionalNode<Type>> newNode);
+    shared_ptr<BiDirectionalNode<Type>> insertNodeAfter(shared_ptr<BiDirectionalNode<Type>> nodeToInsertAfter,
+                                                        shared_ptr<BiDirectionalNode<Type>> newNode);
 
     void remove(shared_ptr<BiDirectionalNode<Type>> nodeToDelete);
 

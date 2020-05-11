@@ -20,8 +20,6 @@ namespace DataStructuresWet1 {
         this->artistId = artistId;
     }
 
-    ArtistInfo::ArtistInfo() = default;
-
     ArtistInfo::~ArtistInfo() = default;
 
     unique_ptr<SongInfo[]> &ArtistInfo::getSongs() {
@@ -36,12 +34,12 @@ namespace DataStructuresWet1 {
         return this->songInfoListPointers;
     }
 
-    int ArtistInfo::getArtistId() {
+    int ArtistInfo::getArtistId() const {
         return this->artistId;
     }
 
 
-    int ArtistInfo::getNumOfSongs() {
+    int ArtistInfo::getNumOfSongs() const {
         return this->numOfSongs;
     }
 }

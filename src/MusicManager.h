@@ -21,17 +21,13 @@ namespace DataStructuresWet1 {
 
         StatusType addArtist(int artistId, int numOfSongs);
 
-        AVLTree<int, ArtistInfo> getArtistsToSongs();
-
         StatusType removeArtist(int artistId);
 
         StatusType addToSongCount(int artistId, int songId);
 
-        StatusType numberOfStreams(int artistId, int songId, int *streams);
+        StatusType numberOfStreams(int artistId, int songId, int *streams) const;
 
-        StatusType getRecommendedSongs(int numOfSongs, int *artists, int *songs);
-
-        BiDirectionalLinkedList<StreamCountGroup> getStreamCountGroups();
+        StatusType getRecommendedSongs(int numOfSongs, int *artists, int *songs) const;
 
     private:
         AVLTree<int, ArtistInfo> artistsToSongs;

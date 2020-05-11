@@ -28,11 +28,11 @@ public:
 
     void remove(const Key &key);
 
-    void printTreeInfoInOrder(std::ostream &os);
+    void printTreeInfoInOrder(std::ostream &os) const;
 
     void treeClear();
 
-    shared_ptr<TNode<Key, Info>> getNextNodeInOrder(shared_ptr<TNode<Key, Info>> node);
+    shared_ptr<TNode<Key, Info>> getNextNodeInOrder(shared_ptr<TNode<Key, Info>> node) const;
 
     class KeyAlreadyExistsException : std::exception {
     };
@@ -110,7 +110,7 @@ private:
   */
     shared_ptr<TNode<Key, Info>> fixTreeBalance(shared_ptr<TNode<Key, Info>> treeNode);
 
-    void printTreeInfoInOrder(std::ostream &os, shared_ptr<TNode<Key, Info>> treeNode);
+    void printTreeInfoInOrder(std::ostream &os, shared_ptr<TNode<Key, Info>> treeNode) const;
 
     void updateHeight(shared_ptr<TNode<Key, Info>> treeNode);
 
@@ -121,11 +121,11 @@ private:
     shared_ptr<TNode<Key, Info>> removeWithInOrderSwap(shared_ptr<TNode<Key, Info>> nodeToSwapAndRemove,
                                                        shared_ptr<TNode<Key, Info>> treeNode);
 
-    shared_ptr<TNode<Key, Info>> getNextNodeInOrderLeft(shared_ptr<TNode<Key, Info>> node);
+    shared_ptr<TNode<Key, Info>> getNextNodeInOrderLeft(shared_ptr<TNode<Key, Info>> node) const;
 
     shared_ptr<TNode<Key, Info>> getNextNodeInOrderFromRoot(shared_ptr<TNode<Key, Info>> node,
                                                             shared_ptr<TNode<Key, Info>> nodeToFindNext,
-                                                            shared_ptr<TNode<Key, Info>> lastLeft);
+                                                            shared_ptr<TNode<Key, Info>> lastLeft) const;
 };
 
 

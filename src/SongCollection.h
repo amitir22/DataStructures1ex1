@@ -25,7 +25,7 @@ namespace DataStructuresWet1 {
 
         void setArtistId(int newArtistId);
 
-        void setSongIds(const  AVLTree<int, shared_ptr<BiDirectionalNode<SongInfo>>> &newSongIdsToSongInfoPointers);
+        void setSongIds(const AVLTree<int, shared_ptr<BiDirectionalNode<SongInfo>>> &newSongIdsToSongInfoPointers);
 
         void setOrderedSongs(const BiDirectionalLinkedList<SongInfo> &newOrderedSongs);
 

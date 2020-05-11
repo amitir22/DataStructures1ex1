@@ -29,7 +29,7 @@ BiDirectionalNode<Type> *BiDirectionalNode<Type>::getNextPointer() const {
 }
 
 template<class Type>
-weak_ptr<BiDirectionalNode<Type>> BiDirectionalNode<Type>::getPrevious() {
+weak_ptr<BiDirectionalNode<Type>> BiDirectionalNode<Type>::getPrevious() const {
     return this->previous;
 }
 

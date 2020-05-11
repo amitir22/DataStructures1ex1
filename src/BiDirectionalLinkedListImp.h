@@ -22,7 +22,7 @@ shared_ptr<BiDirectionalNode<Type>> BiDirectionalLinkedList<Type>::getFirst() co
 }
 
 template<class Type>
-BiDirectionalNode<Type>* BiDirectionalLinkedList<Type>::getFirstPointer() const {
+BiDirectionalNode<Type> *BiDirectionalLinkedList<Type>::getFirstPointer() const {
     return this->first.get();
 }
 

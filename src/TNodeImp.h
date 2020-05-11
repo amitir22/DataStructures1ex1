@@ -27,17 +27,17 @@ Info &TNode<Key, Info>::getInfo() {
 }
 
 template<class Key, class Info>
-shared_ptr<Info> TNode<Key, Info>::getInfoPointer() {
+shared_ptr<Info> TNode<Key, Info>::getInfoPointer() const {
     return this->infoPointer;
 }
 
 template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> TNode<Key, Info>::getLeft() {
+shared_ptr<TNode<Key, Info>> TNode<Key, Info>::getLeft() const {
     return this->left;
 }
 
 template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> TNode<Key, Info>::getRight() {
+shared_ptr<TNode<Key, Info>> TNode<Key, Info>::getRight() const {
     return this->right;
 }
 
@@ -68,7 +68,7 @@ void TNode<Key, Info>::setRight(shared_ptr<TNode<Key, Info>> newRight) {
 }
 
 template<class Key, class Info>
-int TNode<Key, Info>::getHeight() {
+int TNode<Key, Info>::getHeight() const {
     return this->height;
 }
 

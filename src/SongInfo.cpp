@@ -12,7 +12,7 @@ namespace DataStructuresWet1 {
 
     SongInfo::~SongInfo() = default;
 
-    int SongInfo::getArtistId() {
+    int SongInfo::getArtistId() const {
         return this->artistId;
     }
 
@@ -20,7 +20,7 @@ namespace DataStructuresWet1 {
         return this->songId;
     }
 
-    int SongInfo::getStreamCount() {
+    int SongInfo::getStreamCount() const {
         return this->streamCount;
     }
 

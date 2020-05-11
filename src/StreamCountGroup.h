@@ -18,17 +18,17 @@ namespace DataStructuresWet1 {
 
         ~StreamCountGroup();
 
-        AVLTree<int, shared_ptr<BiDirectionalNode<SongCollection>>>& getArtistToSongCollectionPointers();
+        AVLTree<int, shared_ptr<BiDirectionalNode<SongCollection>>> &getArtistToSongCollectionPointers();
 
-        BiDirectionalLinkedList<SongCollection>& getOrderedSongsCollectionsByArtistId();
+        BiDirectionalLinkedList<SongCollection> &getOrderedSongsCollectionsByArtistId();
 
-        int getStreamCount();
+        int getStreamCount() const;
 
         void setArtistToSongCollections(const AVLTree<int,
-                shared_ptr<BiDirectionalNode<SongCollection>>>& newArtistToSongCollectionPointers);
+                shared_ptr<BiDirectionalNode<SongCollection>>> &newArtistToSongCollectionPointers);
 
         void setOrderedSongsCollectionsByArtistId(
-                const BiDirectionalLinkedList<SongCollection>& newOrderedSongsCollectionsByArtistId);
+                const BiDirectionalLinkedList<SongCollection> &newOrderedSongsCollectionsByArtistId);
 
         void setStreamCount(int newStreamCount);
 

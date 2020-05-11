@@ -21,15 +21,15 @@ public:
 
     Info &getInfo();
 
-    shared_ptr<Info> getInfoPointer();
+    shared_ptr<Info> getInfoPointer() const;
 
-    shared_ptr<TNode<Key, Info>> getLeft();
+    shared_ptr<TNode<Key, Info>> getLeft() const;
 
-    shared_ptr<TNode<Key, Info>> getRight();
+    shared_ptr<TNode<Key, Info>> getRight() const;
 
     void setKey(const Key &newKey);
 
-    int getHeight();
+    int getHeight() const;
 
     void setInfo(const Info &info);
 
