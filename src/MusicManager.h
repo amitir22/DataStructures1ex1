@@ -132,6 +132,10 @@ namespace DataStructuresWet1 {
                                                         &newStreamCountGroupPointer) const;
 
         void insertArtist(int artistId, int numOfSongs);
+
+        void removeLeftOverStreamNode(shared_ptr<BiDirectionalNode<StreamCountGroup>> &streamCountGroupPointer,
+                                      const AVLTree<int, shared_ptr<BiDirectionalNode<SongCollection>>>
+                                      &songCollectionTree);
     };
 }
 

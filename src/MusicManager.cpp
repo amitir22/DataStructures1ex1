@@ -77,7 +77,7 @@ namespace DataStructuresWet1 {
     }
 
     StatusType MusicManager::numberOfStreams(int artistId, int songId, int *streams) const {
-        if (songId < 0 || artistId <= 0) {
+        if (songId < 0 || artistId <= 0 || streams == nullptr) {
             return INVALID_INPUT;
         }
 
@@ -100,7 +100,7 @@ namespace DataStructuresWet1 {
 
     StatusType MusicManager::getRecommendedSongs(int numOfSongs, int *artists, int *songs) const {
         if (numOfSongs <= 0) {
-            return INVALID_INPUT;
+            return ALLOCATION_ERROR; // On purpose that's what the segel asked for
         }
 
         int iteratedSongs = 0;
@@ -213,12 +213,8 @@ namespace DataStructuresWet1 {
 
                 // Check if the list and tree in this stream count group are empty if so then remove them
 
-                if (streamCountNode.getOrderedSongsCollectionsByArtistId().getFirst() == nullptr) {
-                    // enough to check if the list is empty, the tree will be empty as well
-                    assert(streamCountNode.getArtistToSongCollectionPointers().getRoot() == nullptr);
-
-                    this->streamCountGroups.remove(artistInfo.getSongsPos()[i]);
-                }
+                removeLeftOverStreamNode(artistInfo.getSongsPos()[i],
+                        streamCountNode.getArtistToSongCollectionPointers());
             }
         }
     }
@@ -475,11 +471,7 @@ namespace DataStructuresWet1 {
             songCollectionTree.remove(artistId);
         }
 
-        if (songCollectionTree.getRoot() == nullptr) {
-            assert(streamCountGroupPointer->getValue().getOrderedSongsCollectionsByArtistId().getFirst() == nullptr);
-
-            this->streamCountGroups.remove(streamCountGroupPointer);
-        }
+        removeLeftOverStreamNode(streamCountGroupPointer, songCollectionTree);
     }
 
     int MusicManager::insertSongsFromSongInfoList(int numOfSongs, int *artists, int *songs, int iteratedSongs,
@@ -579,5 +571,14 @@ namespace DataStructuresWet1 {
 
         insertNewSongCollectionToTheFirstStreamCountGroup(artistId, newSongCollectionNode, newSongCollectionNodePtr,
                                                           newSongCollectionTreeNode);
+    }
+
+    void
+    MusicManager::removeLeftOverStreamNode(shared_ptr<BiDirectionalNode<StreamCountGroup>> &streamCountGroupPointer,
+                                           const AVLTree<int, shared_ptr<BiDirectionalNode<SongCollection>>>
+                                           &songCollectionTree) {
+        if (songCollectionTree.getRoot() == nullptr && streamCountGroupPointer != streamCountGroups.getFirst()) {
+            streamCountGroups.remove(streamCountGroupPointer);
+        }
     }
 }
