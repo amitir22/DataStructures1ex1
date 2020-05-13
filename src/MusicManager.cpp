@@ -271,7 +271,7 @@ namespace DataStructuresWet1 {
                                                     AVLTree<int, shared_ptr<BiDirectionalNode<SongCollection>>>
                                                     &artistToSongCollections) {
         // O(log(n))
-        artistToSongCollections.insert(std::move(newSongCollectionTreeNode));
+        artistToSongCollections.insert(newSongCollectionTreeNode);
 
         // Now we get the next tree node in order to use it to insert to the orderedSongsCollectionsByArtistId list
         shared_ptr<TNode<int, shared_ptr<BiDirectionalNode<SongCollection>>>> nextTreeNodeInOrder =
