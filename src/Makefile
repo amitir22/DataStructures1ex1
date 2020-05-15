@@ -5,7 +5,7 @@ AVL_TREE_TESTS_OBJECTS = AVLTreeTests.o
 MAIN1_OBJECTS = main1.o library1.o MusicManager.o ArtistInfo.o \
 SongCollection.o SongInfo.o StreamCountGroup.o
 OBJS = ${MUSIC_MANAGER_TESTS_OBJECTS} ${AVL_TREE_TESTS_OBJECTS} ${MAIN1_OBJECTS}
-DEBUG_FLAG = -DNDEBUG
+DEBUG_FLAG = -g
 COMP_FLAG = -std=c++11 -Wall -Werror -pedantic-errors
 EXEC = MusicManagerTests AVLTreeTests main1
 
