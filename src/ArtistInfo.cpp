@@ -7,15 +7,11 @@
 namespace DataStructuresWet1 {
     DataStructuresWet1::ArtistInfo::ArtistInfo(int artistId, int numOfSongs) : artistId(artistId),
                                                                                numOfSongs(numOfSongs) {
-        auto *songInfosArray = new SongInfo[numOfSongs];
-        auto *streamCountListPointersArray = new shared_ptr<BiDirectionalNode<StreamCountGroup>>[numOfSongs];
-        auto *songInfoListPointersArray = new shared_ptr<BiDirectionalNode<SongInfo>>[this->numOfSongs];
-
-        this->songs = unique_ptr<SongInfo[]>(songInfosArray);
+        this->songs = unique_ptr<SongInfo[]>(new SongInfo[numOfSongs]);
         this->songsPos = unique_ptr<shared_ptr<BiDirectionalNode<StreamCountGroup>>[]>(
-                streamCountListPointersArray);
+                new shared_ptr<BiDirectionalNode<StreamCountGroup>>[numOfSongs]);
         this->songInfoListPointers = unique_ptr<shared_ptr<BiDirectionalNode<SongInfo>>[]>(
-                songInfoListPointersArray);
+                new shared_ptr<BiDirectionalNode<SongInfo>>[this->numOfSongs]);
 
         for (int i = 0; i < numOfSongs; i++) {
             this->songs[i] = SongInfo(artistId, i, 0);
