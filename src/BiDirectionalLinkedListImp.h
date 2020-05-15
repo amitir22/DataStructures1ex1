@@ -130,7 +130,9 @@ BiDirectionalLinkedList<Type>::insertNodeAfter(shared_ptr<BiDirectionalNode<Type
 
 template<class Type>
 void BiDirectionalLinkedList<Type>::remove(shared_ptr<BiDirectionalNode<Type>> nodeToDelete) {
-    assert(nodeToDelete != nullptr);
+    if (nodeToDelete == nullptr) {
+        return;
+    }
 
     if (nodeToDelete->getNext() != nullptr) {
         nodeToDelete->getNext()->setPrevious(nodeToDelete->getPrevious().lock());
