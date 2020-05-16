@@ -5,7 +5,6 @@
 #ifndef DATASTRUCTURESWET1_MUSICMANAGER_H
 #define DATASTRUCTURESWET1_MUSICMANAGER_H
 
-
 #include "AVLTree.h"
 #include "ArtistInfo.h"
 #include "BiDirectionalLinkedList.h"
