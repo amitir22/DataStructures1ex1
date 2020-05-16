@@ -15,18 +15,25 @@ namespace DataStructuresWet1 {
 
     class ArtistInfo {
     public:
+        // O(n) - where n is numOfSongs
         explicit ArtistInfo(int artistId, int numOfSongs);
 
+        // O(1)
         ~ArtistInfo();
 
+        // O(1)
         unique_ptr<SongInfo[]> &getSongs();
 
+        // O(1)
         unique_ptr<shared_ptr<BiDirectionalNode<StreamCountGroup>>[]> &getSongsPos();
 
+        // O(1)
         unique_ptr<shared_ptr<BiDirectionalNode<SongInfo>>[]> &getSongInfoListPointers();
 
+        // O(1)
         int getArtistId() const;
 
+        // O(1)
         int getNumOfSongs() const;
 
     private:

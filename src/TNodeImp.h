@@ -14,6 +14,13 @@ template<class Key, class Info>
 TNode<Key, Info>::TNode() = default;
 
 template<class Key, class Info>
+TNode<Key, Info>::TNode(const Key &key, const Info &info)
+        : TNode() {
+    this->key = key;
+    this->infoPointer = make_shared<Info>(info);
+}
+
+template<class Key, class Info>
 TNode<Key, Info>::~TNode() = default;
 
 template<class Key, class Info>

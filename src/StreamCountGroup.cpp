@@ -12,7 +12,7 @@ namespace DataStructuresWet1 {
 
     DataStructuresWet1::StreamCountGroup::~StreamCountGroup() = default;
 
-    AVLTree<int, shared_ptr<BiDirectionalNode<SongCollection>>> &
+    AVLTree<ArtistID, shared_ptr<BiDirectionalNode<SongCollection>>> &
     DataStructuresWet1::StreamCountGroup::getArtistToSongCollectionPointers() {
         return this->artistToSongCollectionPointers;
     }
@@ -22,18 +22,18 @@ namespace DataStructuresWet1 {
         return this->orderedSongsCollectionsByArtistId;
     }
 
+    int StreamCountGroup::getStreamCount() const {
+        return this->streamCount;
+    }
+
     void DataStructuresWet1::StreamCountGroup::setArtistToSongCollections(
-            const AVLTree<int, shared_ptr<BiDirectionalNode<SongCollection>>> &newArtistToSongCollectionPointers) {
+            const AVLTree<ArtistID, shared_ptr<BiDirectionalNode<SongCollection>>> &newArtistToSongCollectionPointers) {
         this->artistToSongCollectionPointers = newArtistToSongCollectionPointers;
     }
 
     void DataStructuresWet1::StreamCountGroup::setOrderedSongsCollectionsByArtistId(
             const BiDirectionalLinkedList<SongCollection> &newOrderedSongsCollectionsByArtistId) {
         this->orderedSongsCollectionsByArtistId = newOrderedSongsCollectionsByArtistId;
-    }
-
-    int StreamCountGroup::getStreamCount() const {
-        return this->streamCount;
     }
 
     void StreamCountGroup::setStreamCount(int newStreamCount) {

@@ -13,24 +13,34 @@ namespace DataStructuresWet1 {
 
     class SongInfo {
     public:
+        // O(1)
         SongInfo();
 
+        // O(1)
         SongInfo(int artistId, int songId, int streamCount);
 
+        // O(1)
         ~SongInfo();
 
+        // O(1)
         int getArtistId() const;
 
+        // O(1)
         int getSongId() const;
 
+        // O(1)
         int getStreamCount() const;
 
+        // O(1)
         void setArtistId(int newArtistId);
 
+        // O(1)
         void setSongId(int newSongId);
 
+        // O(1)
         void setStreamCount(int newStreamCount);
 
+        // O(1)
         friend ostream &operator<<(ostream &os, const SongInfo &songInfo);
 
     private:
