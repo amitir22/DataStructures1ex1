@@ -547,7 +547,8 @@ namespace DataStructuresWet1 {
         return newSongCollectionPointer;
     }
 
-    void MusicManager::insertArtist(int artistId, int numOfSongs) {// First we allocate all the memory needed
+    void MusicManager::insertArtist(int artistId, int numOfSongs) {
+        // First we allocate all the memory needed
         BiDirectionalNode<SongCollection> newSongCollectionNode = initializeNewSongCollectionNode(artistId, numOfSongs);
 
         std::shared_ptr<BiDirectionalNode<SongCollection>> newSongCollectionNodePtr =
