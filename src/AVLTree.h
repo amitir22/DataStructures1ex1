@@ -24,18 +24,23 @@ public:
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     shared_ptr<TNode<Key, Info>> find(const Key &key) const;
 
+    // TODO: O(1?)
     void insert(const Key &key, const Info &info);
 
+    // TODO: O(1?)
     // This is done to allow pre allocation and deal with potential allocation errors gracefully
     void insert(shared_ptr<TNode<Key, Info>> newNode);
 
+    // TODO: O(1?)
     void remove(const Key &key);
 
+    // TODO: O(1?)
     void printTreeInfoInOrder(std::ostream &os) const;
 
     // TODO: O(1?)
     void treeClear();
 
+    // TODO: O(1?)
     shared_ptr<TNode<Key, Info>> getNextNodeInOrder(shared_ptr<TNode<Key, Info>> node) const;
 
     class KeyAlreadyExistsException : std::exception {
@@ -162,12 +167,12 @@ private:
     shared_ptr<TNode<Key, Info>> removeWithInOrderSwap(shared_ptr<TNode<Key, Info>> nodeToSwapAndRemove,
                                                        shared_ptr<TNode<Key, Info>> treeNode);
 
-    // TODO: O(?)
+    // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     shared_ptr<TNode<Key, Info>> getNextNodeInOrderLeft(shared_ptr<TNode<Key, Info>> node) const;
 
-    // TODO: O(?)
-    shared_ptr<TNode<Key, Info>> getNextNodeInOrderFromRoot(shared_ptr<TNode<Key, Info>> node,
-                                                            shared_ptr<TNode<Key, Info>> nodeToFindNext,
+    // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
+    shared_ptr<TNode<Key, Info>> getNextNodeInOrderFromRoot(shared_ptr<TNode<Key, Info>> currentNode,
+                                                            shared_ptr<TNode<Key, Info>> nodeToFind,
                                                             shared_ptr<TNode<Key, Info>> lastLeft) const;
 };
 

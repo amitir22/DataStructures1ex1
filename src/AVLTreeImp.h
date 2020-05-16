@@ -321,20 +321,20 @@ AVLTree<Key, Info>::getNextNodeInOrderLeft(shared_ptr<TNode<Key, Info>> node) co
 
 template<class Key, class Info>
 shared_ptr<TNode<Key, Info>>
-AVLTree<Key, Info>::getNextNodeInOrderFromRoot(shared_ptr<TNode<Key, Info>> node,
-                                               shared_ptr<TNode<Key, Info>> nodeToFindNext,
+AVLTree<Key, Info>::getNextNodeInOrderFromRoot(shared_ptr<TNode<Key, Info>> currentNode,
+                                               shared_ptr<TNode<Key, Info>> nodeToFind,
                                                shared_ptr<TNode<Key, Info>> lastLeft) const {
-    if (node == nullptr) {
+    if (currentNode == nullptr) {
         return lastLeft;
     }
 
-    if (nodeToFindNext->getKey() < node->getKey()) {
-        return getNextNodeInOrderFromRoot(node->getLeft(), nodeToFindNext, node);
-    } else if (nodeToFindNext->getKey() > node->getKey()) {
-        return getNextNodeInOrderFromRoot(node->getRight(), nodeToFindNext, lastLeft);
+    if (nodeToFind->getKey() < currentNode->getKey()) {
+        return getNextNodeInOrderFromRoot(currentNode->getLeft(), nodeToFind, currentNode);
+    } else if (nodeToFind->getKey() > currentNode->getKey()) {
+        return getNextNodeInOrderFromRoot(currentNode->getRight(), nodeToFind, lastLeft);
     }
 
-    assert(nodeToFindNext->getKey() == node->getKey());
+    assert(nodeToFind->getKey() == currentNode->getKey());
 
     return lastLeft;
 }
