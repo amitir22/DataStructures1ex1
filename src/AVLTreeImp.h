@@ -15,55 +15,55 @@ const int STARTING_HEIGHT = 0;
 
 using std::make_shared;
 
-template<class Key, class Info>
-AVLTree<Key, Info>::AVLTree() = default;
+template<class Key, class Value>
+AVLTree<Key, Value>::AVLTree() = default;
 
-template<class Key, class Info>
-AVLTree<Key, Info>::~AVLTree() = default;
+template<class Key, class Value>
+AVLTree<Key, Value>::~AVLTree() = default;
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::getRoot() const {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>> AVLTree<Key, Value>::getRoot() const {
     return this->root;
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::find(const Key &key) const {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>> AVLTree<Key, Value>::find(const Key &key) const {
     return searchBinaryTree(key, this->root);
 }
 
-template<class Key, class Info>
-void AVLTree<Key, Info>::insert(const Key &key, const Info &info) {
-    shared_ptr<TNode<Key, Info>> newNode = make_shared<TNode<Key, Info>>(key, info);
+template<class Key, class Value>
+void AVLTree<Key, Value>::insert(const Key &key, const Value &info) {
+    shared_ptr<TNode<Key, Value>> newNode = make_shared<TNode<Key, Value>>(key, info);
 
     this->insert(newNode);
 }
 
-template<class Key, class Info>
-void AVLTree<Key, Info>::insert(shared_ptr<TNode<Key, Info>> newNode) {
+template<class Key, class Value>
+void AVLTree<Key, Value>::insert(shared_ptr<TNode<Key, Value>> newNode) {
     newNode->setHeight(STARTING_HEIGHT);
 
     this->root = insertAVLSubTree(newNode, this->root);
 }
 
-template<class Key, class Info>
-void AVLTree<Key, Info>::remove(const Key &key) {
+template<class Key, class Value>
+void AVLTree<Key, Value>::remove(const Key &key) {
     this->root = removeFromAVLTree(this->root, key);
 }
 
-template<class Key, class Info>
-void AVLTree<Key, Info>::printTreeInfoInOrder(std::ostream &os) const {
-    os << "Tree Info summary:" << std::endl;
+template<class Key, class Value>
+void AVLTree<Key, Value>::printTreeInfoInOrder(std::ostream &os) const {
+    os << "Tree Value summary:" << std::endl;
 
-    printTreeInfoInOrder(os, this->root);
+    printTreeValueInOrder(os, this->root);
 }
 
-template<class Key, class Info>
-void AVLTree<Key, Info>::treeClear() {
+template<class Key, class Value>
+void AVLTree<Key, Value>::treeClear() {
     this->root = nullptr;
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::getNextNodeInOrder(shared_ptr<TNode<Key, Info>> node) const {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>> AVLTree<Key, Value>::getNextNodeInOrder(shared_ptr<TNode<Key, Value>> node) const {
     if (node == nullptr) {
         return nullptr;
     } else if (node->getRight() != nullptr) {
@@ -75,9 +75,9 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::getNextNodeInOrder(shared_ptr<T
 
 // Private Methods:
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>>
-AVLTree<Key, Info>::searchBinaryTree(const Key &key, shared_ptr<TNode<Key, Info>> treeNode) const {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>>
+AVLTree<Key, Value>::searchBinaryTree(const Key &key, shared_ptr<TNode<Key, Value>> treeNode) const {
     if (treeNode == nullptr) {
         return nullptr;
     }
@@ -96,9 +96,9 @@ AVLTree<Key, Info>::searchBinaryTree(const Key &key, shared_ptr<TNode<Key, Info>
     return nullptr;
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::insertAVLSubTree(shared_ptr<TNode<Key, Info>> newNode,
-                                                                  shared_ptr<TNode<Key, Info>> subTreeNode) {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>> AVLTree<Key, Value>::insertAVLSubTree(shared_ptr<TNode<Key, Value>> newNode,
+                                                                  shared_ptr<TNode<Key, Value>> subTreeNode) {
     if (subTreeNode == nullptr) {
         return newNode;
     }
@@ -118,12 +118,12 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::insertAVLSubTree(shared_ptr<TNo
     return fixTreeBalance(subTreeNode);
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rotateRightChildRight(shared_ptr<TNode<Key, Info>> treeNode) {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>> AVLTree<Key, Value>::rotateRightChildRight(shared_ptr<TNode<Key, Value>> treeNode) {
     // Code should never get here if left is null
     assert(treeNode->getLeft() != nullptr);
 
-    shared_ptr<TNode<Key, Info>> leftTree = treeNode->getLeft();
+    shared_ptr<TNode<Key, Value>> leftTree = treeNode->getLeft();
     treeNode->setLeft(leftTree->getRight());
     leftTree->setRight(treeNode);
 
@@ -133,12 +133,12 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rotateRightChildRight(shared_pt
     return leftTree;
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rotateLeftChildLeft(shared_ptr<TNode<Key, Info>> treeNode) {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>> AVLTree<Key, Value>::rotateLeftChildLeft(shared_ptr<TNode<Key, Value>> treeNode) {
     // Code should never get here if right is null
     assert(treeNode->getRight() != nullptr);
 
-    shared_ptr<TNode<Key, Info>> rightTree = treeNode->getRight();
+    shared_ptr<TNode<Key, Value>> rightTree = treeNode->getRight();
     treeNode->setRight(rightTree->getLeft());
     rightTree->setLeft(treeNode);
 
@@ -148,34 +148,34 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rotateLeftChildLeft(shared_ptr<
     return rightTree;
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rotateRightChildLeft(shared_ptr<TNode<Key, Info>> treeNode) {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>> AVLTree<Key, Value>::rotateRightChildLeft(shared_ptr<TNode<Key, Value>> treeNode) {
     // Code should never get here if either is null
     assert(treeNode->getRight() != nullptr);
     assert(treeNode->getRight()->getLeft() != nullptr);
 
-    shared_ptr<TNode<Key, Info>> rightTree = rotateRightChildRight(treeNode->getRight());
+    shared_ptr<TNode<Key, Value>> rightTree = rotateRightChildRight(treeNode->getRight());
     treeNode->setRight(rightTree);
     updateHeight(treeNode);
 
     return rotateLeftChildLeft(treeNode);
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rotateLeftChildRight(shared_ptr<TNode<Key, Info>> treeNode) {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>> AVLTree<Key, Value>::rotateLeftChildRight(shared_ptr<TNode<Key, Value>> treeNode) {
     // Code should never get here if either is null
     assert(treeNode->getLeft() != nullptr);
     assert(treeNode->getLeft()->getRight() != nullptr);
 
-    shared_ptr<TNode<Key, Info>> leftTree = rotateLeftChildLeft(treeNode->getLeft());
+    shared_ptr<TNode<Key, Value>> leftTree = rotateLeftChildLeft(treeNode->getLeft());
     treeNode->setLeft(leftTree);
     updateHeight(treeNode);
 
     return rotateRightChildRight(treeNode);
 }
 
-template<class Key, class Info>
-int AVLTree<Key, Info>::getBalanceFactor(shared_ptr<TNode<Key, Info>> treeNode) const {
+template<class Key, class Value>
+int AVLTree<Key, Value>::getBalanceFactor(shared_ptr<TNode<Key, Value>> treeNode) const {
     int leftTreeHeight = treeNode->getLeft() != nullptr ? treeNode->getLeft()->getHeight() : STARTING_HEIGHT - 1;
     int rightTreeHeight = treeNode->getRight() != nullptr ? treeNode->getRight()->getHeight() : STARTING_HEIGHT - 1;
 
@@ -184,8 +184,8 @@ int AVLTree<Key, Info>::getBalanceFactor(shared_ptr<TNode<Key, Info>> treeNode) 
     return balanceFactor;
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::fixTreeBalance(shared_ptr<TNode<Key, Info>> treeNode) {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>> AVLTree<Key, Value>::fixTreeBalance(shared_ptr<TNode<Key, Value>> treeNode) {
     if (treeNode != nullptr) {
         int balanceFactor = this->getBalanceFactor(treeNode);
 
@@ -219,8 +219,8 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::fixTreeBalance(shared_ptr<TNode
     return nullptr;
 }
 
-template<class Key, class Info>
-void AVLTree<Key, Info>::updateHeight(shared_ptr<TNode<Key, Info>> treeNode) {
+template<class Key, class Value>
+void AVLTree<Key, Value>::updateHeight(shared_ptr<TNode<Key, Value>> treeNode) {
     if (treeNode != nullptr) {
         int leftTreeHeight = treeNode->getLeft() == nullptr ? STARTING_HEIGHT : treeNode->getLeft()->getHeight() + 1;
         int rightTreeHeight = treeNode->getRight() == nullptr ? STARTING_HEIGHT : treeNode->getRight()->getHeight() + 1;
@@ -229,22 +229,22 @@ void AVLTree<Key, Info>::updateHeight(shared_ptr<TNode<Key, Info>> treeNode) {
     }
 }
 
-template<class Key, class Info>
-void AVLTree<Key, Info>::printTreeInfoInOrder(std::ostream &os, shared_ptr<TNode<Key, Info>> treeNode) const {
+template<class Key, class Value>
+void AVLTree<Key, Value>::printTreeInfoInOrder(std::ostream &os, shared_ptr<TNode<Key, Value>> treeNode) const {
     if (treeNode != nullptr) {
-        printTreeInfoInOrder(os, treeNode->getLeft());
+        printTreeValueInOrder(os, treeNode->getLeft());
 
         os << "Key: " << treeNode->getKey() << " BF: " << getBalanceFactor(treeNode) << " Height: "
            << treeNode->getHeight()
            << std::endl;
 
-        printTreeInfoInOrder(os, treeNode->getRight());
+        printTreeValueInOrder(os, treeNode->getRight());
     }
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>>
-AVLTree<Key, Info>::removeFromAVLTree(shared_ptr<TNode<Key, Info>> treeNode, const Key &key) {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>>
+AVLTree<Key, Value>::removeFromAVLTree(shared_ptr<TNode<Key, Value>> treeNode, const Key &key) {
     if (treeNode == nullptr) {
         throw KeyDoesNotExistException();
     }
@@ -272,31 +272,31 @@ AVLTree<Key, Info>::removeFromAVLTree(shared_ptr<TNode<Key, Info>> treeNode, con
     }
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>>
-AVLTree<Key, Info>::removeWithInOrderSwap(shared_ptr<TNode<Key, Info>> treeNode) {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>>
+AVLTree<Key, Value>::removeWithInOrderSwap(shared_ptr<TNode<Key, Value>> treeNode) {
     treeNode->setRight(removeWithInOrderSwap(treeNode, treeNode->getRight()));
 
     // Now treeNode key and value are swapped and removed with its right subtree balanced
     return treeNode;
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>>
-AVLTree<Key, Info>::removeWithInOrderSwap(shared_ptr<TNode<Key, Info>> nodeToSwapAndRemove,
-                                          shared_ptr<TNode<Key, Info>> treeNode) {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>>
+AVLTree<Key, Value>::removeWithInOrderSwap(shared_ptr<TNode<Key, Value>> nodeToSwapAndRemove,
+                                          shared_ptr<TNode<Key, Value>> treeNode) {
     assert(treeNode != nullptr);
     assert(nodeToSwapAndRemove != nullptr);
 
     if (treeNode->getLeft() == nullptr) {
         // swap nodes with the current treeNode that is the next in order
-        shared_ptr<Info> infoToSwapPointer = nodeToSwapAndRemove->getInfoPointer();
+        shared_ptr<Value> infoToSwapPointer = nodeToSwapAndRemove->getValuePointer();
         Key keyToSwap = nodeToSwapAndRemove->getKey();
 
-        nodeToSwapAndRemove->setInfoPointer(treeNode->getInfoPointer());
+        nodeToSwapAndRemove->setValuePointer(treeNode->getValuePointer());
         nodeToSwapAndRemove->setKey(treeNode->getKey());
 
-        treeNode->setInfoPointer(infoToSwapPointer);
+        treeNode->setValuePointer(infoToSwapPointer);
         treeNode->setKey(keyToSwap);
 
         return removeFromAVLTree(treeNode, treeNode->getKey());
@@ -309,9 +309,9 @@ AVLTree<Key, Info>::removeWithInOrderSwap(shared_ptr<TNode<Key, Info>> nodeToSwa
     }
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>>
-AVLTree<Key, Info>::getNextNodeInOrderLeft(shared_ptr<TNode<Key, Info>> node) const {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>>
+AVLTree<Key, Value>::getNextNodeInOrderLeft(shared_ptr<TNode<Key, Value>> node) const {
     if (node == nullptr) {
         return nullptr;
     } else if (node->getLeft() == nullptr) {
@@ -321,11 +321,11 @@ AVLTree<Key, Info>::getNextNodeInOrderLeft(shared_ptr<TNode<Key, Info>> node) co
     }
 }
 
-template<class Key, class Info>
-shared_ptr<TNode<Key, Info>>
-AVLTree<Key, Info>::getNextNodeInOrderFromRoot(shared_ptr<TNode<Key, Info>> currentNode,
-                                               shared_ptr<TNode<Key, Info>> nodeToFind,
-                                               shared_ptr<TNode<Key, Info>> lastLeft) const {
+template<class Key, class Value>
+shared_ptr<TNode<Key, Value>>
+AVLTree<Key, Value>::getNextNodeInOrderFromRoot(shared_ptr<TNode<Key, Value>> currentNode,
+                                               shared_ptr<TNode<Key, Value>> nodeToFind,
+                                               shared_ptr<TNode<Key, Value>> lastLeft) const {
     if (currentNode == nullptr) {
         return lastLeft;
     }

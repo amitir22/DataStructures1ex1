@@ -10,14 +10,14 @@
 
 using std::shared_ptr;
 
-template<class Key, class Info>
+template<class Key, class Value>
 class TNode {
 public:
     // O(1)
     TNode();
 
     // O(1)
-    TNode(const Key &newKey, const Info &info);
+    TNode(const Key &newKey, const Value &value);
 
     // O(1)
     ~TNode();
@@ -26,16 +26,16 @@ public:
     Key &getKey();
 
     // O(1)
-    Info &getInfo();
+    Value &getValue();
 
     // O(1)
-    shared_ptr<Info> getInfoPointer() const;
+    shared_ptr<Value> getValuePointer() const;
 
     // O(1)
-    shared_ptr<TNode<Key, Info>> getLeft() const;
+    shared_ptr<TNode<Key, Value>> getLeft() const;
 
     // O(1)
-    shared_ptr<TNode<Key, Info>> getRight() const;
+    shared_ptr<TNode<Key, Value>> getRight() const;
 
     // O(1)
     int getHeight() const;
@@ -44,25 +44,25 @@ public:
     void setKey(const Key &newKey);
 
     // O(1)
-    void setInfo(const Info &info);
+    void setValue(const Value &value);
 
     // O(1)
-    void setInfoPointer(shared_ptr<Info> newInfoPointer);
+    void setValuePointer(shared_ptr<Value> newValuePointer);
 
     // O(1)
-    void setLeft(shared_ptr<TNode<Key, Info>> left);
+    void setLeft(shared_ptr<TNode<Key, Value>> left);
 
     // O(1)
-    void setRight(shared_ptr<TNode<Key, Info>> right);
+    void setRight(shared_ptr<TNode<Key, Value>> right);
 
     // O(1)
     void setHeight(int height);
 
 private:
     Key key;
-    shared_ptr<Info> infoPointer;
-    shared_ptr<TNode<Key, Info>> left;
-    shared_ptr<TNode<Key, Info>> right;
+    shared_ptr<Value> valuePointer;
+    shared_ptr<TNode<Key, Value>> left;
+    shared_ptr<TNode<Key, Value>> right;
     int height;
 };
 
