@@ -14,10 +14,10 @@ template<class Key, class Value>
 TNode<Key, Value>::TNode() = default;
 
 template<class Key, class Value>
-TNode<Key, Value>::TNode(const Key &key, const Value &info)
+TNode<Key, Value>::TNode(const Key &key, const Value &value)
         : TNode() {
     this->key = key;
-    this->infoPointer = make_shared<Value>(info);
+    this->valuePointer = make_shared<Value>(value);
 }
 
 template<class Key, class Value>
@@ -29,13 +29,13 @@ Key &TNode<Key, Value>::getKey() {
 }
 
 template<class Key, class Value>
-Value &TNode<Key, Value>::getInfo() {
-    return *(this->infoPointer.get());
+Value &TNode<Key, Value>::getValue() {
+    return *(this->valuePointer.get());
 }
 
 template<class Key, class Value>
-shared_ptr<Value> TNode<Key, Value>::getInfoPointer() const {
-    return this->infoPointer;
+shared_ptr<Value> TNode<Key, Value>::getValuePointer() const {
+    return this->valuePointer;
 }
 
 template<class Key, class Value>
@@ -59,13 +59,13 @@ void TNode<Key, Value>::setKey(const Key &newKey) {
 }
 
 template<class Key, class Value>
-void TNode<Key, Value>::setInfo(const Value &newInfo) {
-    this->infoPointer = make_shared<Value>(newInfo);
+void TNode<Key, Value>::setValue(const Value &newValue) {
+    this->valuePointer = make_shared<Value>(newValue);
 }
 
 template<class Key, class Value>
-void TNode<Key, Value>::setInfoPointer(shared_ptr<Value> newInfoPointer) {
-    this->infoPointer = newInfoPointer;
+void TNode<Key, Value>::setValuePointer(shared_ptr<Value> newValuePointer) {
+    this->valuePointer = newValuePointer;
 }
 
 template<class Key, class Value>

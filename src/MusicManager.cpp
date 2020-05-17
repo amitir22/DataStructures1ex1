@@ -39,7 +39,7 @@ namespace DataStructuresWet1 {
             return FAILURE;
         }
 
-        ArtistInfo &artistInfo = artistInfoTreeNode->getInfo();
+        ArtistInfo &artistInfo = artistInfoTreeNode->getValue();
 
         removeSongsFromStreamCountGroup(artistId, artistInfo);
 
@@ -59,7 +59,7 @@ namespace DataStructuresWet1 {
             return FAILURE;
         }
 
-        ArtistInfo &artistInfo = artistInfoTreeNode->getInfo();
+        ArtistInfo &artistInfo = artistInfoTreeNode->getValue();
 
         if (songId >= artistInfo.getNumOfSongs()) {
             return INVALID_INPUT;
@@ -85,7 +85,7 @@ namespace DataStructuresWet1 {
             return FAILURE;
         }
 
-        ArtistInfo &artistInfo = artistInfoTreeNode->getInfo();
+        ArtistInfo &artistInfo = artistInfoTreeNode->getValue();
 
         if (songId >= artistInfo.getNumOfSongs()) {
             return INVALID_INPUT;
@@ -148,7 +148,7 @@ namespace DataStructuresWet1 {
                 make_shared<TNode<int, ArtistInfo>>();
 
         newArtistIntoTreeNode->setKey(artistId);
-        newArtistIntoTreeNode->setInfoPointer(artistInfoPointer);
+        newArtistIntoTreeNode->setValuePointer(artistInfoPointer);
 
         return newArtistIntoTreeNode;
     }
@@ -204,7 +204,7 @@ namespace DataStructuresWet1 {
             // If it's null that means that we already removed a song from the same stream count group
             if (songCollectionPointer != nullptr) {
                 // Remove the pointer from the list
-                streamCountNode.getOrderedSongsCollectionsByArtistId().remove(songCollectionPointer->getInfo());
+                streamCountNode.getOrderedSongsCollectionsByArtistId().remove(songCollectionPointer->getValue());
 
                 // Remove the artist
                 streamCountNode.getArtistToSongCollectionPointers().remove(artistId);
@@ -226,7 +226,7 @@ namespace DataStructuresWet1 {
 
         // Get the songCollection in which the song is in. O(log(n)) worst case
         shared_ptr<BiDirectionalNode<SongCollection>> songCollectionPointer =
-                songCollectionTree.find(artistId)->getInfo();
+                songCollectionTree.find(artistId)->getValue();
 
         AVLTree<int, shared_ptr<BiDirectionalNode<SongInfo>>> &songIdToSongInfoPointers =
                 songCollectionPointer->getValue().getSongIdsToSongInfoPointers();
@@ -281,7 +281,7 @@ namespace DataStructuresWet1 {
                                                               newSongCollectionNodePtr);
         } else {
             // Put it right after the previous value of the next in order node
-            orderedSongsCollectionsByArtistId.insertNodeAfter(nextTreeNodeInOrder->getInfo()->getPrevious().lock(),
+            orderedSongsCollectionsByArtistId.insertNodeAfter(nextTreeNodeInOrder->getValue()->getPrevious().lock(),
                                                               newSongCollectionNodePtr);
         }
     }
@@ -293,7 +293,7 @@ namespace DataStructuresWet1 {
         shared_ptr<TNode<int, shared_ptr<BiDirectionalNode<SongCollection>>>> newSongCollectionTreeNode =
                 make_shared<TNode<int, shared_ptr<BiDirectionalNode<SongCollection>>>>();
 
-        newSongCollectionTreeNode->setInfo(newSongCollectionPointer);
+        newSongCollectionTreeNode->setValue(newSongCollectionPointer);
         newSongCollectionTreeNode->setKey(artistId);
 
         return newSongCollectionTreeNode;
@@ -358,7 +358,7 @@ namespace DataStructuresWet1 {
             return initNewSongCollectionInExistingStreamCountGroup(artistId, newStreamCountGroupPointer);
 
         } else {
-            return newSongCollectionTreePointer->getInfo();
+            return newSongCollectionTreePointer->getValue();
         }
     }
 
@@ -382,7 +382,7 @@ namespace DataStructuresWet1 {
                                                      newSongInfoPointer);
         } else {
             // Put it right after the previous value of the next in order node
-            orderedSongInfosBySongId.insertNodeAfter(nextSongPointer->getInfo()->getPrevious().lock(),
+            orderedSongInfosBySongId.insertNodeAfter(nextSongPointer->getValue()->getPrevious().lock(),
                                                      newSongInfoPointer);
         }
     }
@@ -437,7 +437,7 @@ namespace DataStructuresWet1 {
                 make_shared<TNode<int, shared_ptr<BiDirectionalNode<SongInfo>>>>();
 
         newSongInfoPointerTreeNode->setKey(newSongInfo.getSongId());
-        newSongInfoPointerTreeNode->setInfo(newSongInfoPointer);
+        newSongInfoPointerTreeNode->setValue(newSongInfoPointer);
 
         shared_ptr<BiDirectionalNode<SongCollection>> newSongCollectionPointer =
                 getNewSongCollectionPointer(artistId,
@@ -557,7 +557,7 @@ namespace DataStructuresWet1 {
         std::shared_ptr<TNode<int, std::shared_ptr<BiDirectionalNode<SongCollection>>>> newSongCollectionTreeNode =
                 std::make_shared<TNode<int, std::shared_ptr<BiDirectionalNode<SongCollection>>>>();
 
-        newSongCollectionTreeNode->setInfo(newSongCollectionNodePtr);
+        newSongCollectionTreeNode->setValue(newSongCollectionNodePtr);
         newSongCollectionTreeNode->setKey(artistId);
 
         std::shared_ptr<TNode<int, ArtistInfo>> newArtistIntoTreeNode =
