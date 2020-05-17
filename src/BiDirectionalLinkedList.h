@@ -5,7 +5,6 @@
 #ifndef DATASTRUCTURESWET1_BIDIRECTIONALLINKEDLIST_H
 #define DATASTRUCTURESWET1_BIDIRECTIONALLINKEDLIST_H
 
-
 #include "BiDirectionalNode.h"
 #include <iostream>
 

@@ -1,7 +1,6 @@
 #include "library1.h"
 #include "MusicManager.h"
 
-
 using DataStructuresWet1::MusicManager;
 using std::bad_alloc;
 

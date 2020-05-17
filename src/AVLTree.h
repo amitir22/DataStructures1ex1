@@ -70,18 +70,18 @@ private:
     /**
      * @brief Inserts new node to binary AVL tree while keeping balance factor in check
      *
-     * @complexity O(log(n)) - where n is the number of elements in the given treeNode.
+     * @complexity O(log(n)) - where n is the number of elements in the given subTreeNode.
      *             explanation:
-     *                  O(h) - where h is the height of the given treeNode.
+     *                  O(h) - where h is the height of the given subTreeNode.
      *                  h = log(n) in AVLTree (balanced)
      *
      * @param newNode - new node to add
-     * @param treeNode - Pointer of the tree root to add to
+     * @param subTreeNode - Pointer of the tree root to add to
      *
      * @return Current root after inserting and balancing tree
      */
     shared_ptr<TNode<Key, Info>>
-    insertAVLTree(shared_ptr<TNode<Key, Info>> newNode, shared_ptr<TNode<Key, Info>> treeNode);
+    insertAVLSubTree(shared_ptr<TNode<Key, Info>> newNode, shared_ptr<TNode<Key, Info>> subTreeNode);
 
     /**
      * @brief Performs right rotation on treeNode
@@ -92,7 +92,7 @@ private:
      *
      * @return New root after the rotation is done
      */
-    shared_ptr<TNode<Key, Info>> rightRotate(shared_ptr<TNode<Key, Info>> treeNode);
+    shared_ptr<TNode<Key, Info>> rotateRightChildRight(shared_ptr<TNode<Key, Info>> treeNode);
 
     /**
      * @brief Performs left rotation on treeNode
@@ -103,7 +103,7 @@ private:
      *
      * @return New root after the rotation is done
      */
-    shared_ptr<TNode<Key, Info>> leftRotate(shared_ptr<TNode<Key, Info>> treeNode);
+    shared_ptr<TNode<Key, Info>> rotateLeftChildLeft(shared_ptr<TNode<Key, Info>> treeNode);
 
     /**
      * @brief Performs right left rotation on treeNode
@@ -114,7 +114,7 @@ private:
      *
      * @return New root after the rotation is done
      */
-    shared_ptr<TNode<Key, Info>> rightLeftRotate(shared_ptr<TNode<Key, Info>> treeNode);
+    shared_ptr<TNode<Key, Info>> rotateRightChildLeft(shared_ptr<TNode<Key, Info>> treeNode);
 
     /**
      * @brief Performs left right rotation on treeNode
@@ -125,7 +125,7 @@ private:
      *
      * @return New root after the rotation is done
      */
-    shared_ptr<TNode<Key, Info>> leftRightRotate(shared_ptr<TNode<Key, Info>> treeNode);
+    shared_ptr<TNode<Key, Info>> rotateLeftChildRight(shared_ptr<TNode<Key, Info>> treeNode);
 
     /**
      * @brief Calculates balance factor of current tree node

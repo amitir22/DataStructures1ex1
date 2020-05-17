@@ -42,7 +42,7 @@ template<class Key, class Info>
 void AVLTree<Key, Info>::insert(shared_ptr<TNode<Key, Info>> newNode) {
     newNode->setHeight(STARTING_HEIGHT);
 
-    this->root = insertAVLTree(newNode, this->root);
+    this->root = insertAVLSubTree(newNode, this->root);
 }
 
 template<class Key, class Info>
@@ -97,27 +97,27 @@ AVLTree<Key, Info>::searchBinaryTree(const Key &key, shared_ptr<TNode<Key, Info>
 }
 
 template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::insertAVLTree(shared_ptr<TNode<Key, Info>> newNode,
-                                                               shared_ptr<TNode<Key, Info>> treeNode) {
-    if (treeNode == nullptr) {
+shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::insertAVLSubTree(shared_ptr<TNode<Key, Info>> newNode,
+                                                                  shared_ptr<TNode<Key, Info>> subTreeNode) {
+    if (subTreeNode == nullptr) {
         return newNode;
     }
 
-    if (treeNode->getKey() == newNode->getKey()) {
+    if (subTreeNode->getKey() == newNode->getKey()) {
         throw KeyAlreadyExistsException();
-    } else if (treeNode->getKey() < newNode->getKey()) {
-        treeNode->setRight(insertAVLTree(newNode, treeNode->getRight()));
-    } else if (treeNode->getKey() > newNode->getKey()) {
-        treeNode->setLeft(insertAVLTree(newNode, treeNode->getLeft()));
+    } else if (subTreeNode->getKey() < newNode->getKey()) {
+        subTreeNode->setRight(insertAVLSubTree(newNode, subTreeNode->getRight()));
+    } else if (subTreeNode->getKey() > newNode->getKey()) {
+        subTreeNode->setLeft(insertAVLSubTree(newNode, subTreeNode->getLeft()));
     }
 
-    updateHeight(treeNode);
+    updateHeight(subTreeNode);
 
-    return fixTreeBalance(treeNode);
+    return fixTreeBalance(subTreeNode);
 }
 
 template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rightRotate(shared_ptr<TNode<Key, Info>> treeNode) {
+shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rotateRightChildRight(shared_ptr<TNode<Key, Info>> treeNode) {
     // Code should never get here if left is null
     assert(treeNode->getLeft() != nullptr);
 
@@ -132,7 +132,7 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rightRotate(shared_ptr<TNode<Ke
 }
 
 template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::leftRotate(shared_ptr<TNode<Key, Info>> treeNode) {
+shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rotateLeftChildLeft(shared_ptr<TNode<Key, Info>> treeNode) {
     // Code should never get here if right is null
     assert(treeNode->getRight() != nullptr);
 
@@ -147,29 +147,29 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::leftRotate(shared_ptr<TNode<Key
 }
 
 template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rightLeftRotate(shared_ptr<TNode<Key, Info>> treeNode) {
+shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rotateRightChildLeft(shared_ptr<TNode<Key, Info>> treeNode) {
     // Code should never get here if either is null
     assert(treeNode->getRight() != nullptr);
     assert(treeNode->getRight()->getLeft() != nullptr);
 
-    shared_ptr<TNode<Key, Info>> rightTree = rightRotate(treeNode->getRight());
+    shared_ptr<TNode<Key, Info>> rightTree = rotateRightChildRight(treeNode->getRight());
     treeNode->setRight(rightTree);
     updateHeight(treeNode);
 
-    return leftRotate(treeNode);
+    return rotateLeftChildLeft(treeNode);
 }
 
 template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::leftRightRotate(shared_ptr<TNode<Key, Info>> treeNode) {
+shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::rotateLeftChildRight(shared_ptr<TNode<Key, Info>> treeNode) {
     // Code should never get here if either is null
     assert(treeNode->getLeft() != nullptr);
     assert(treeNode->getLeft()->getRight() != nullptr);
 
-    shared_ptr<TNode<Key, Info>> leftTree = leftRotate(treeNode->getLeft());
+    shared_ptr<TNode<Key, Info>> leftTree = rotateLeftChildLeft(treeNode->getLeft());
     treeNode->setLeft(leftTree);
     updateHeight(treeNode);
 
-    return rightRotate(treeNode);
+    return rotateRightChildRight(treeNode);
 }
 
 template<class Key, class Info>
@@ -193,9 +193,9 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::fixTreeBalance(shared_ptr<TNode
             int leftTreeBalanceFactor = this->getBalanceFactor(treeNode->getLeft());
 
             if (leftTreeBalanceFactor >= 0) {
-                return this->rightRotate(treeNode);
+                return this->rotateRightChildRight(treeNode);
             } else if (leftTreeBalanceFactor == -1) {
-                return this->leftRightRotate(treeNode);
+                return this->rotateLeftChildRight(treeNode);
             }
         } else if (balanceFactor == -2) {
             assert(treeNode->getRight() != nullptr);
@@ -203,9 +203,9 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::fixTreeBalance(shared_ptr<TNode
             int rightTreeBalanceFactor = this->getBalanceFactor(treeNode->getRight());
 
             if (rightTreeBalanceFactor <= 0) {
-                return this->leftRotate(treeNode);
+                return this->rotateLeftChildLeft(treeNode);
             } else if (rightTreeBalanceFactor == 1) {
-                return this->rightLeftRotate(treeNode);
+                return this->rotateRightChildLeft(treeNode);
             }
         } else {
             assert(abs(balanceFactor) <= 1);
