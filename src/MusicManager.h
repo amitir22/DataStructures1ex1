@@ -71,10 +71,10 @@ namespace DataStructuresWet1 {
                                                newSongCollectionPointer) const;
 
         shared_ptr<BiDirectionalNode<StreamCountGroup>>
-        createNewStreamCountNode(int artistId,
-                                 const shared_ptr<BiDirectionalNode<StreamCountGroup>>
+        createNewStreamCountNodeWithSongInfo(int artistId,
+                                             const shared_ptr<BiDirectionalNode<StreamCountGroup>>
                                  &streamCountGroupPointer,
-                                 SongInfo &newSongInfo);
+                                             SongInfo &newSongInfo);
 
         shared_ptr<BiDirectionalNode<SongCollection>>
         getNewSongCollectionPointer(int artistId,
