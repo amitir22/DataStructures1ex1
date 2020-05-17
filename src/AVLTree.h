@@ -9,7 +9,7 @@
 
 using std::shared_ptr;
 
-template<class Key, class Info>
+template<class Key, class Value>
 class AVLTree {
 public:
     // O(1)
@@ -19,17 +19,17 @@ public:
     ~AVLTree();
 
     // O(1)
-    shared_ptr<TNode<Key, Info>> getRoot() const;
+    shared_ptr<TNode<Key, Value>> getRoot() const;
 
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
-    shared_ptr<TNode<Key, Info>> find(const Key &key) const;
+    shared_ptr<TNode<Key, Value>> find(const Key &key) const;
 
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
-    void insert(const Key &key, const Info &info);
+    void insert(const Key &key, const Value &info);
 
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     // This is done to allow pre allocation and deal with potential allocation errors gracefully
-    void insert(shared_ptr<TNode<Key, Info>> newNode);
+    void insert(shared_ptr<TNode<Key, Value>> newNode);
 
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     void remove(const Key &key);
@@ -41,7 +41,7 @@ public:
     void treeClear();
 
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
-    shared_ptr<TNode<Key, Info>> getNextNodeInOrder(shared_ptr<TNode<Key, Info>> node) const;
+    shared_ptr<TNode<Key, Value>> getNextNodeInOrder(shared_ptr<TNode<Key, Value>> node) const;
 
     class KeyAlreadyExistsException : std::exception {
     };
@@ -50,7 +50,7 @@ public:
     };
 
 private:
-    shared_ptr<TNode<Key, Info>> root;
+    shared_ptr<TNode<Key, Value>> root;
 
     /**
      * @brief Searches for the given key in the given AVL tree
@@ -65,7 +65,7 @@ private:
      *
      * @return The TNode matching the given key. (if not found then nullptr is returned)
      */
-    shared_ptr<TNode<Key, Info>> searchBinaryTree(const Key &key, shared_ptr<TNode<Key, Info>> treeNode) const;
+    shared_ptr<TNode<Key, Value>> searchBinaryTree(const Key &key, shared_ptr<TNode<Key, Value>> treeNode) const;
 
     /**
      * @brief Inserts new node to binary AVL tree while keeping balance factor in check
@@ -80,8 +80,8 @@ private:
      *
      * @return Current root after inserting and balancing tree
      */
-    shared_ptr<TNode<Key, Info>>
-    insertAVLSubTree(shared_ptr<TNode<Key, Info>> newNode, shared_ptr<TNode<Key, Info>> subTreeNode);
+    shared_ptr<TNode<Key, Value>>
+    insertAVLSubTree(shared_ptr<TNode<Key, Value>> newNode, shared_ptr<TNode<Key, Value>> subTreeNode);
 
     /**
      * @brief Performs right rotation on treeNode
@@ -92,7 +92,7 @@ private:
      *
      * @return New root after the rotation is done
      */
-    shared_ptr<TNode<Key, Info>> rotateRightChildRight(shared_ptr<TNode<Key, Info>> treeNode);
+    shared_ptr<TNode<Key, Value>> rotateRightChildRight(shared_ptr<TNode<Key, Value>> treeNode);
 
     /**
      * @brief Performs left rotation on treeNode
@@ -103,7 +103,7 @@ private:
      *
      * @return New root after the rotation is done
      */
-    shared_ptr<TNode<Key, Info>> rotateLeftChildLeft(shared_ptr<TNode<Key, Info>> treeNode);
+    shared_ptr<TNode<Key, Value>> rotateLeftChildLeft(shared_ptr<TNode<Key, Value>> treeNode);
 
     /**
      * @brief Performs right left rotation on treeNode
@@ -114,7 +114,7 @@ private:
      *
      * @return New root after the rotation is done
      */
-    shared_ptr<TNode<Key, Info>> rotateRightChildLeft(shared_ptr<TNode<Key, Info>> treeNode);
+    shared_ptr<TNode<Key, Value>> rotateRightChildLeft(shared_ptr<TNode<Key, Value>> treeNode);
 
     /**
      * @brief Performs left right rotation on treeNode
@@ -125,7 +125,7 @@ private:
      *
      * @return New root after the rotation is done
      */
-    shared_ptr<TNode<Key, Info>> rotateLeftChildRight(shared_ptr<TNode<Key, Info>> treeNode);
+    shared_ptr<TNode<Key, Value>> rotateLeftChildRight(shared_ptr<TNode<Key, Value>> treeNode);
 
     /**
      * @brief Calculates balance factor of current tree node
@@ -136,7 +136,7 @@ private:
      *
      * @return New root after the rotation is done
      */
-    int getBalanceFactor(shared_ptr<TNode<Key, Info>> treeNode) const;
+    int getBalanceFactor(shared_ptr<TNode<Key, Value>> treeNode) const;
 
     /**
      * @brief Fixes balance factor by performing the needed rotation
@@ -147,31 +147,31 @@ private:
      *
      * @return New root of current tree after the fix is done
      */
-    shared_ptr<TNode<Key, Info>> fixTreeBalance(shared_ptr<TNode<Key, Info>> treeNode);
+    shared_ptr<TNode<Key, Value>> fixTreeBalance(shared_ptr<TNode<Key, Value>> treeNode);
 
     // O(n) - where n is the number of elements in the given treeNode
-    void printTreeInfoInOrder(std::ostream &os, shared_ptr<TNode<Key, Info>> treeNode) const;
+    void printTreeInfoInOrder(std::ostream &os, shared_ptr<TNode<Key, Value>> treeNode) const;
 
     // O(1)
-    void updateHeight(shared_ptr<TNode<Key, Info>> treeNode);
+    void updateHeight(shared_ptr<TNode<Key, Value>> treeNode);
 
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
-    shared_ptr<TNode<Key, Info>> removeFromAVLTree(shared_ptr<TNode<Key, Info>> treeNode, const Key &key);
+    shared_ptr<TNode<Key, Value>> removeFromAVLTree(shared_ptr<TNode<Key, Value>> treeNode, const Key &key);
 
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
-    shared_ptr<TNode<Key, Info>> removeWithInOrderSwap(shared_ptr<TNode<Key, Info>> treeNode);
+    shared_ptr<TNode<Key, Value>> removeWithInOrderSwap(shared_ptr<TNode<Key, Value>> treeNode);
 
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
-    shared_ptr<TNode<Key, Info>> removeWithInOrderSwap(shared_ptr<TNode<Key, Info>> nodeToSwapAndRemove,
-                                                       shared_ptr<TNode<Key, Info>> treeNode);
+    shared_ptr<TNode<Key, Value>> removeWithInOrderSwap(shared_ptr<TNode<Key, Value>> nodeToSwapAndRemove,
+                                                        shared_ptr<TNode<Key, Value>> treeNode);
 
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
-    shared_ptr<TNode<Key, Info>> getNextNodeInOrderLeft(shared_ptr<TNode<Key, Info>> node) const;
+    shared_ptr<TNode<Key, Value>> getNextNodeInOrderLeft(shared_ptr<TNode<Key, Value>> node) const;
 
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
-    shared_ptr<TNode<Key, Info>> getNextNodeInOrderFromRoot(shared_ptr<TNode<Key, Info>> currentNode,
-                                                            shared_ptr<TNode<Key, Info>> nodeToFind,
-                                                            shared_ptr<TNode<Key, Info>> lastLeft) const;
+    shared_ptr<TNode<Key, Value>> getNextNodeInOrderFromRoot(shared_ptr<TNode<Key, Value>> currentNode,
+                                                             shared_ptr<TNode<Key, Value>> nodeToFind,
+                                                             shared_ptr<TNode<Key, Value>> lastLeft) const;
 };
 
 #include "AVLTreeImp.h"
