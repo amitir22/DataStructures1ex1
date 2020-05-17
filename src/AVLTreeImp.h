@@ -111,8 +111,10 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::insertAVLSubTree(shared_ptr<TNo
         subTreeNode->setLeft(insertAVLSubTree(newNode, subTreeNode->getLeft()));
     }
 
+    // it will be called from leaf to root
     updateHeight(subTreeNode);
 
+    // it will be called from leaf to root
     return fixTreeBalance(subTreeNode);
 }
 

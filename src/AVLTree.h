@@ -72,6 +72,7 @@ private:
      *
      * @complexity O(log(n)) - where n is the number of elements in the given subTreeNode.
      *             explanation:
+     *                  it will be called from leaf to root
      *                  O(h) - where h is the height of the given subTreeNode.
      *                  h = log(n) in AVLTree (balanced)
      *
