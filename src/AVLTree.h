@@ -24,23 +24,23 @@ public:
     // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     shared_ptr<TNode<Key, Info>> find(const Key &key) const;
 
-    // TODO: O(1?)
+    // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     void insert(const Key &key, const Info &info);
 
-    // TODO: O(1?)
+    // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     // This is done to allow pre allocation and deal with potential allocation errors gracefully
     void insert(shared_ptr<TNode<Key, Info>> newNode);
 
-    // TODO: O(1?)
+    // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     void remove(const Key &key);
 
-    // TODO: O(1?)
+    // O(n) - where n is the number of elements and h is the height of AVL tree (log(n))
     void printTreeInfoInOrder(std::ostream &os) const;
 
-    // TODO: O(1?)
+    // O(n) - where n is the number of elements and h is the height of AVL tree (log(n))
     void treeClear();
 
-    // TODO: O(1?)
+    // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     shared_ptr<TNode<Key, Info>> getNextNodeInOrder(shared_ptr<TNode<Key, Info>> node) const;
 
     class KeyAlreadyExistsException : std::exception {
@@ -149,21 +149,19 @@ private:
      */
     shared_ptr<TNode<Key, Info>> fixTreeBalance(shared_ptr<TNode<Key, Info>> treeNode);
 
-    // TODO: document these:
-
     // O(n) - where n is the number of elements in the given treeNode
     void printTreeInfoInOrder(std::ostream &os, shared_ptr<TNode<Key, Info>> treeNode) const;
 
     // O(1)
     void updateHeight(shared_ptr<TNode<Key, Info>> treeNode);
 
-    // TODO: O(?)
+    // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     shared_ptr<TNode<Key, Info>> removeFromAVLTree(shared_ptr<TNode<Key, Info>> treeNode, const Key &key);
 
-    // TODO: O(?)
+    // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     shared_ptr<TNode<Key, Info>> removeWithInOrderSwap(shared_ptr<TNode<Key, Info>> treeNode);
 
-    // TODO: O(?)
+    // O(log(n)) = O(h) - where n is the number of elements and h is the height of AVL tree (log(n))
     shared_ptr<TNode<Key, Info>> removeWithInOrderSwap(shared_ptr<TNode<Key, Info>> nodeToSwapAndRemove,
                                                        shared_ptr<TNode<Key, Info>> treeNode);
 
