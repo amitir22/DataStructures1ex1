@@ -30,7 +30,7 @@ public:
     shared_ptr<BiDirectionalNode<Type>> getLast() const;
 
     // O(1)
-    void insert(const Type &newValue);
+    void append(const Type &newValue);
 
     // O(n) - where n is the number of elements in the list
     shared_ptr<BiDirectionalNode<Type>> findNodeByValue(const Type &valueToFind) const;

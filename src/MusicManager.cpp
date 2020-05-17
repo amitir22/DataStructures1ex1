@@ -9,7 +9,7 @@ namespace DataStructuresWet1 {
     MusicManager::MusicManager() : artistsToSongs(), streamCountGroups() {
         StreamCountGroup streamCountGroup(0);
 
-        this->streamCountGroups.insert(streamCountGroup);
+        this->streamCountGroups.append(streamCountGroup);
     }
 
     MusicManager::~MusicManager() = default;
@@ -183,7 +183,7 @@ namespace DataStructuresWet1 {
         SongCollection songCollection;
 
         for (int i = 0; i < numOfSongs; i++) {
-            songCollection.getOrderedSongs().insert(SongInfo(artistId, i, 0));
+            songCollection.getOrderedSongs().append(SongInfo(artistId, i, 0));
         }
 
         songCollection.setArtistId(artistId);

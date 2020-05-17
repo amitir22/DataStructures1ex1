@@ -32,7 +32,7 @@ shared_ptr<BiDirectionalNode<Type>> BiDirectionalLinkedList<Type>::getLast() con
 }
 
 template<class Type>
-void BiDirectionalLinkedList<Type>::insert(const Type &newValue) {
+void BiDirectionalLinkedList<Type>::append(const Type &newValue) {
     shared_ptr<BiDirectionalNode<Type>> newLast = make_shared<BiDirectionalNode<Type>>();
 
     newLast->setValue(newValue);
