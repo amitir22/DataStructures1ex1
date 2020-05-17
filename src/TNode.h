@@ -38,10 +38,10 @@ public:
     shared_ptr<TNode<Key, Info>> getRight() const;
 
     // O(1)
-    void setKey(const Key &newKey);
+    int getHeight() const;
 
     // O(1)
-    int getHeight() const;
+    void setKey(const Key &newKey);
 
     // O(1)
     void setInfo(const Info &info);

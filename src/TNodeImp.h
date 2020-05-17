@@ -49,6 +49,11 @@ shared_ptr<TNode<Key, Value>> TNode<Key, Value>::getRight() const {
 }
 
 template<class Key, class Value>
+int TNode<Key, Value>::getHeight() const {
+    return this->height;
+}
+
+template<class Key, class Value>
 void TNode<Key, Value>::setKey(const Key &newKey) {
     this->key = newKey;
 }
@@ -71,11 +76,6 @@ void TNode<Key, Value>::setLeft(shared_ptr<TNode<Key, Value>> newLeft) {
 template<class Key, class Value>
 void TNode<Key, Value>::setRight(shared_ptr<TNode<Key, Value>> newRight) {
     this->right = newRight;
-}
-
-template<class Key, class Value>
-int TNode<Key, Value>::getHeight() const {
-    return this->height;
 }
 
 template<class Key, class Value>
