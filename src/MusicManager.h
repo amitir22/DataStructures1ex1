@@ -5,7 +5,6 @@
 #ifndef DATASTRUCTURESWET1_MUSICMANAGER_H
 #define DATASTRUCTURESWET1_MUSICMANAGER_H
 
-
 #include "AVLTree.h"
 #include "ArtistInfo.h"
 #include "BiDirectionalLinkedList.h"
@@ -72,10 +71,10 @@ namespace DataStructuresWet1 {
                                                newSongCollectionPointer) const;
 
         shared_ptr<BiDirectionalNode<StreamCountGroup>>
-        createNewStreamCountNode(int artistId,
-                                 const shared_ptr<BiDirectionalNode<StreamCountGroup>>
-                                 &streamCountGroupPointer,
-                                 SongInfo &newSongInfo);
+        createNewStreamCountNodeWithSongInfo(int artistId,
+                                             const shared_ptr<BiDirectionalNode<StreamCountGroup>>
+                                             &streamCountGroupPointer,
+                                             SongInfo &newSongInfo);
 
         shared_ptr<BiDirectionalNode<SongCollection>>
         getNewSongCollectionPointer(int artistId,

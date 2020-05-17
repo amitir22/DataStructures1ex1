@@ -13,23 +13,32 @@ using std::weak_ptr;
 template<class Type>
 class BiDirectionalNode {
 public:
+    // O(1)
     BiDirectionalNode();
 
+    // O(1)
     ~BiDirectionalNode();
 
+    // O(1)
     Type &getValue();
 
+    // O(1)
     shared_ptr<BiDirectionalNode<Type>> getNext() const;
 
+    // O(1)
     // Done for optimization when we want to iterate a bit faster
     BiDirectionalNode<Type> *getNextPointer() const;
 
+    // O(1)
     weak_ptr<BiDirectionalNode<Type>> getPrevious() const;
 
+    // O(1)
     void setValue(const Type &newValue);
 
+    // O(1)
     void setNext(shared_ptr<BiDirectionalNode<Type>> newNext);
 
+    // O(1)
     void setPrevious(shared_ptr<BiDirectionalNode<Type>> newPrevious);
 
 private:

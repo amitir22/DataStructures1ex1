@@ -13,7 +13,7 @@ namespace DataStructuresWet1 {
         return this->artistId;
     }
 
-    AVLTree<int, shared_ptr<BiDirectionalNode<SongInfo>>> &
+    AVLTree<SongID, shared_ptr<BiDirectionalNode<SongInfo>>> &
     DataStructuresWet1::SongCollection::getSongIdsToSongInfoPointers() {
         return this->songIdsToSongInfoPointers;
     }
@@ -28,7 +28,7 @@ namespace DataStructuresWet1 {
     }
 
     void DataStructuresWet1::SongCollection::setSongIds(
-            const AVLTree<int, shared_ptr<BiDirectionalNode<SongInfo>>> &newSongIdsToSongInfoPointers) {
+            const AVLTree<SongID, shared_ptr<BiDirectionalNode<SongInfo>>> &newSongIdsToSongInfoPointers) {
         this->songIdsToSongInfoPointers = newSongIdsToSongInfoPointers;
     }
 

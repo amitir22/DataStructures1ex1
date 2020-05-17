@@ -10,30 +10,41 @@
 #include "BiDirectionalLinkedList.h"
 
 namespace DataStructuresWet1 {
+    typedef int ArtistID;
+
     class StreamCountGroup {
     public:
+        // O(1)
         explicit StreamCountGroup(int streamCount);
 
+        // O(1)
         StreamCountGroup();
 
+        // O(1)
         ~StreamCountGroup();
 
-        AVLTree<int, shared_ptr<BiDirectionalNode<SongCollection>>> &getArtistToSongCollectionPointers();
+        // O(1)
+        AVLTree<ArtistID, shared_ptr<BiDirectionalNode<SongCollection>>> &getArtistToSongCollectionPointers();
 
+        // O(1)
         BiDirectionalLinkedList<SongCollection> &getOrderedSongsCollectionsByArtistId();
 
+        // O(1)
         int getStreamCount() const;
 
-        void setArtistToSongCollections(const AVLTree<int,
+        // O(1)
+        void setArtistToSongCollections(const AVLTree<ArtistID,
                 shared_ptr<BiDirectionalNode<SongCollection>>> &newArtistToSongCollectionPointers);
 
+        // O(1)
         void setOrderedSongsCollectionsByArtistId(
                 const BiDirectionalLinkedList<SongCollection> &newOrderedSongsCollectionsByArtistId);
 
+        // O(1)
         void setStreamCount(int newStreamCount);
 
     private:
-        AVLTree<int, shared_ptr<BiDirectionalNode<SongCollection>>> artistToSongCollectionPointers;
+        AVLTree<ArtistID, shared_ptr<BiDirectionalNode<SongCollection>>> artistToSongCollectionPointers;
         BiDirectionalLinkedList<SongCollection> orderedSongsCollectionsByArtistId;
         int streamCount;
     };

@@ -33,13 +33,9 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::find(const Key &key) const {
 
 template<class Key, class Info>
 void AVLTree<Key, Info>::insert(const Key &key, const Info &info) {
-    shared_ptr<TNode<Key, Info>> newNode = make_shared<TNode<Key, Info>>();
+    shared_ptr<TNode<Key, Info>> newNode = make_shared<TNode<Key, Info>>(key, info);
 
-    newNode->setKey(key);
-    newNode->setHeight(STARTING_HEIGHT);
-    newNode->setInfo(info);
-
-    this->root = insertAVLTree(newNode, this->root);
+    this->insert(newNode);
 }
 
 template<class Key, class Info>
@@ -76,6 +72,8 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::getNextNodeInOrder(shared_ptr<T
 
     return getNextNodeInOrderFromRoot(this->root, node, nullptr);
 }
+
+// Private Methods:
 
 template<class Key, class Info>
 shared_ptr<TNode<Key, Info>>
@@ -231,9 +229,7 @@ void AVLTree<Key, Info>::updateHeight(shared_ptr<TNode<Key, Info>> treeNode) {
 
 template<class Key, class Info>
 void AVLTree<Key, Info>::printTreeInfoInOrder(std::ostream &os, shared_ptr<TNode<Key, Info>> treeNode) const {
-    if (treeNode == nullptr) {
-        return;
-    } else {
+    if (treeNode != nullptr) {
         printTreeInfoInOrder(os, treeNode->getLeft());
 
         os << "Key: " << treeNode->getKey() << " BF: " << getBalanceFactor(treeNode) << " Height: "
@@ -312,7 +308,8 @@ AVLTree<Key, Info>::removeWithInOrderSwap(shared_ptr<TNode<Key, Info>> nodeToSwa
 }
 
 template<class Key, class Info>
-shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::getNextNodeInOrderLeft(shared_ptr<TNode<Key, Info>> node) const {
+shared_ptr<TNode<Key, Info>>
+AVLTree<Key, Info>::getNextNodeInOrderLeft(shared_ptr<TNode<Key, Info>> node) const {
     if (node == nullptr) {
         return nullptr;
     } else if (node->getLeft() == nullptr) {
@@ -324,20 +321,20 @@ shared_ptr<TNode<Key, Info>> AVLTree<Key, Info>::getNextNodeInOrderLeft(shared_p
 
 template<class Key, class Info>
 shared_ptr<TNode<Key, Info>>
-AVLTree<Key, Info>::getNextNodeInOrderFromRoot(shared_ptr<TNode<Key, Info>> node,
-                                               shared_ptr<TNode<Key, Info>> nodeToFindNext,
+AVLTree<Key, Info>::getNextNodeInOrderFromRoot(shared_ptr<TNode<Key, Info>> currentNode,
+                                               shared_ptr<TNode<Key, Info>> nodeToFind,
                                                shared_ptr<TNode<Key, Info>> lastLeft) const {
-    if (node == nullptr) {
+    if (currentNode == nullptr) {
         return lastLeft;
     }
 
-    if (nodeToFindNext->getKey() < node->getKey()) {
-        return getNextNodeInOrderFromRoot(node->getLeft(), nodeToFindNext, node);
-    } else if (nodeToFindNext->getKey() > node->getKey()) {
-        return getNextNodeInOrderFromRoot(node->getRight(), nodeToFindNext, lastLeft);
+    if (nodeToFind->getKey() < currentNode->getKey()) {
+        return getNextNodeInOrderFromRoot(currentNode->getLeft(), nodeToFind, currentNode);
+    } else if (nodeToFind->getKey() > currentNode->getKey()) {
+        return getNextNodeInOrderFromRoot(currentNode->getRight(), nodeToFind, lastLeft);
     }
 
-    assert(nodeToFindNext->getKey() == node->getKey());
+    assert(nodeToFind->getKey() == currentNode->getKey());
 
     return lastLeft;
 }

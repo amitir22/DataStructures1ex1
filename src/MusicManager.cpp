@@ -4,8 +4,6 @@
 
 #include "MusicManager.h"
 #include <cassert>
-#include <utility>
-
 
 namespace DataStructuresWet1 {
     MusicManager::MusicManager() : artistsToSongs(), streamCountGroups() {
@@ -214,7 +212,7 @@ namespace DataStructuresWet1 {
                 // Check if the list and tree in this stream count group are empty if so then remove them
 
                 removeLeftOverStreamNode(artistInfo.getSongsPos()[i],
-                        streamCountNode.getArtistToSongCollectionPointers());
+                                         streamCountNode.getArtistToSongCollectionPointers());
             }
         }
     }
@@ -302,10 +300,10 @@ namespace DataStructuresWet1 {
     }
 
     shared_ptr<BiDirectionalNode<StreamCountGroup>>
-    MusicManager::createNewStreamCountNode(int artistId,
-                                           const shared_ptr<BiDirectionalNode<StreamCountGroup>>
-                                           &streamCountGroupPointer,
-                                           SongInfo &newSongInfo) {
+    MusicManager::createNewStreamCountNodeWithSongInfo(int artistId,
+                                                       const shared_ptr<BiDirectionalNode<StreamCountGroup>>
+                                                       &streamCountGroupPointer,
+                                                       SongInfo &newSongInfo) {
         shared_ptr<BiDirectionalNode<SongCollection>> newSongCollectionPointer =
                 initializeNewSongCollectionPointer(artistId);
 
@@ -511,9 +509,9 @@ namespace DataStructuresWet1 {
                                                                    &streamCountGroupPointer,
                                                                    SongInfo &newSongInfo) {
         std::shared_ptr<BiDirectionalNode<StreamCountGroup>> newStreamCountGroupPointer =
-                createNewStreamCountNode(artistId,
-                                         streamCountGroupPointer,
-                                         newSongInfo);
+                createNewStreamCountNodeWithSongInfo(artistId,
+                                                     streamCountGroupPointer,
+                                                     newSongInfo);
 
         // The first songCollection node will be the right one because the stream count node is new
         std::shared_ptr<BiDirectionalNode<SongCollection>> newSongCollectionPointer =
@@ -549,7 +547,8 @@ namespace DataStructuresWet1 {
         return newSongCollectionPointer;
     }
 
-    void MusicManager::insertArtist(int artistId, int numOfSongs) {// First we allocate all the memory needed
+    void MusicManager::insertArtist(int artistId, int numOfSongs) {
+        // First we allocate all the memory needed
         BiDirectionalNode<SongCollection> newSongCollectionNode = initializeNewSongCollectionNode(artistId, numOfSongs);
 
         std::shared_ptr<BiDirectionalNode<SongCollection>> newSongCollectionNodePtr =

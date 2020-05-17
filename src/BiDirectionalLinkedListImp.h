@@ -98,30 +98,30 @@ shared_ptr<BiDirectionalNode<Type>>
 BiDirectionalLinkedList<Type>::insertNodeAfter(shared_ptr<BiDirectionalNode<Type>> nodeToInsertAfter,
                                                shared_ptr<BiDirectionalNode<Type>> newNode) {
     // If list is empty we insert it to the the head of the list
-    if (getFirst() == nullptr) {
+    if (this->first == nullptr) {
         assert(nodeToInsertAfter == nullptr);
 
         this->first = newNode;
         this->last = newNode;
 
-        return getFirst();
+        return this->first;
     }
 
     newNode->setPrevious(nodeToInsertAfter);
 
-    if (nodeToInsertAfter != nullptr) {
-        newNode->setNext(nodeToInsertAfter->getNext());
-        nodeToInsertAfter->setNext(newNode);
-    } else {
+    if (nodeToInsertAfter == nullptr) {
         newNode->setNext(this->first);
         this->first = newNode;
+    } else {
+        newNode->setNext(nodeToInsertAfter->getNext());
+        nodeToInsertAfter->setNext(newNode);
     }
 
     if (newNode->getNext() != nullptr) {
         newNode->getNext()->setPrevious(newNode);
     }
 
-    if (nodeToInsertAfter == getLast()) {
+    if (nodeToInsertAfter == this->last) {
         this->last = newNode;
     }
 
@@ -142,11 +142,11 @@ void BiDirectionalLinkedList<Type>::remove(shared_ptr<BiDirectionalNode<Type>> n
         nodeToDelete->getPrevious().lock()->setNext(nodeToDelete->getNext());
     }
 
-    if (nodeToDelete == getFirst()) {
-        this->first = this->first->getNext();
+    if (nodeToDelete == this->first) {
+        this->first = nodeToDelete->getNext();
     }
 
-    if (nodeToDelete == getLast()) {
+    if (nodeToDelete == this->last) {
         this->last = nodeToDelete->getPrevious().lock();
     }
 }
