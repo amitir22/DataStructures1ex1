@@ -37,7 +37,7 @@ public:
     shared_ptr<BiDirectionalNode<Type>> findNodeByValue(const Type &valueToFind) const;
 
     // O(n) - where n is the number of elements in the list
-    void deleteNodeByValue(const Type &valueToFind);
+    void removeNodeByValue(const Type &valueToFind);
 
     // O(n) - where n is the number of elements in the list
     void printList(ostream &os) const;

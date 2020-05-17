@@ -8,12 +8,6 @@ OBJS = ${MUSIC_MANAGER_TESTS_OBJECTS} ${AVL_TREE_TESTS_OBJECTS} ${MAIN1_OBJECTS}
 DEBUG_FLAG = -g
 COMP_FLAG = -std=c++11 -Wall -Werror -pedantic-errors
 EXEC = MusicManagerTests AVLTreeTests main1
-
-MusicManagerTests: ${MUSIC_MANAGER_TESTS_OBJECTS}
-	${CC} ${MUSIC_MANAGER_TESTS_OBJECTS} -o $@
-	
-AVLTreeTests: ${AVL_TREE_TESTS_OBJECTS}
-	${CC} ${AVL_TREE_TESTS_OBJECTS} -o $@
 	
 main1: ${MAIN1_OBJECTS}
 	${CC} ${MAIN1_OBJECTS} -o $@

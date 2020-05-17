@@ -33,22 +33,19 @@ shared_ptr<BiDirectionalNode<Type>> BiDirectionalLinkedList<Type>::getLast() con
 
 template<class Type>
 void BiDirectionalLinkedList<Type>::insert(const Type &newValue) {
+    shared_ptr<BiDirectionalNode<Type>> newLast = make_shared<BiDirectionalNode<Type>>();
+
+    newLast->setValue(newValue);
+    newLast->setNext(nullptr);
+
     if (this->first == nullptr) {
-        this->first = make_shared<BiDirectionalNode<Type>>();
+        newLast->setPrevious(nullptr);
 
-        this->first->setNext(nullptr);
-        this->first->setPrevious(nullptr);
-        this->first->setValue(newValue);
-
+        this->first = newLast;
         this->last = this->first;
     } else {
-        shared_ptr<BiDirectionalNode<Type>> newLast = make_shared<BiDirectionalNode<Type>>();
-
-        newLast->setNext(nullptr);
-        newLast->setPrevious(last);
-        newLast->setValue(newValue);
-
-        last->setNext(newLast);
+        newLast->setPrevious(this->last);
+        this->last->setNext(newLast);
 
         this->last = newLast;
     }
@@ -64,12 +61,12 @@ shared_ptr<BiDirectionalNode<Type>> BiDirectionalLinkedList<Type>::findNodeByVal
 }
 
 template<class Type>
-void BiDirectionalLinkedList<Type>::deleteNodeByValue(const Type &valueToFind) {
+void BiDirectionalLinkedList<Type>::removeNodeByValue(const Type &valueToFind) {
     for (shared_ptr<BiDirectionalNode<Type>> current = this->first; current != nullptr; current = current->getNext()) {
         if (valueToFind == current->getValue()) {
             remove(current);
 
-            break;
+            return;
         }
     }
 }
